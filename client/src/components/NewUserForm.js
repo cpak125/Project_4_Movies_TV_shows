@@ -21,11 +21,38 @@ export default class NewUserForm extends Component {
         this.setState({ newUser })
     }
 
+    handleSubmit = (event) => {
+        event.preventDefault()
+        const newUser = { ...this.state.newUser }
+        this.props.addNewUser(newUser)
+        this.setState({
+            newUser: {
+                name: '',
+                age: '',
+                location:''
+            }
+        })
+        this.setState({ modalOpen: false })
+    }
+
+    addNewUserModal = () => (
+        <Modal trigger={<Button onClick={this.handleOpen}>(+)</Button>}
+            open={this.state.modalOpen}
+            >
+            <Modal.Content form="true">
+                <Form onSubmit={this.handleSubmit}>
+                    <input onChange={this.handleChange} type="text" name="name" value={this.state.newUser.name} placeholder='Name' />
+                    <input onChange={this.handleChange} type="text" name="age" value={this.state.newUser.age} placeholder='Age' />
+                    <input onChange={this.handleChange} type="text" name="location" value={this.state.newUser.location} placeholder='City,State' />
+                    <Button  className='update' type='submit' value='Add Post'>Submit</Button>
+                </Form>
+            </Modal.Content>
+        </Modal>
+    )
+
     render() {
         return (
-            <div>
-
-            </div>
+           this.addNewUserModal()
         )
     }
 }

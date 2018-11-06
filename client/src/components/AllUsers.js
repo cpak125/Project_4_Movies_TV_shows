@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 import styled from 'styled-components'
+import NewUserForm from './NewUserForm';
 
 
 export default class AllUsers extends Component {
@@ -19,8 +20,9 @@ export default class AllUsers extends Component {
         this.setState({ users: response.data })
     }
 
-    addNewUser = async()=>{
-        
+    addNewUser = async (newUser) => {
+        await axios.post('/api/users', newUser)
+        this.fetchUsers()
     }
 
     render() {
@@ -34,8 +36,11 @@ export default class AllUsers extends Component {
 
         return (
             <div>
-                <h1>All Users</h1>
-                
+                <h1>All Users<NewUserForm
+                    addNewUser={this.addNewUser}
+                />
+                </h1>
+
                 <div>
                     {userList}
                 </div>
