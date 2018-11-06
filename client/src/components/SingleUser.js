@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import axios from 'axios'
+import { Redirect } from 'react-router-dom'
 import styled from 'styled-components'
-import { Card } from 'semantic-ui-react'
+import { Card, Button } from 'semantic-ui-react'
 
 const Page = styled.div`
     padding-top: 20px;
@@ -14,9 +15,6 @@ const Page = styled.div`
 const StyledCard = styled(Card)`
     &&&{
         width: 30vw;
-        /* display:flex;
-        flex-direction:column;
-        align-items: center; */
         height: 300px;
     }
 `
@@ -32,7 +30,8 @@ const StyledCardContent=styled(Card.Content)`
 `
 export default class SingleUser extends Component {
     state = {
-        user: {}
+        user: {},
+        redirect: false
     }
 
     fetchData = async () => {
@@ -47,7 +46,17 @@ export default class SingleUser extends Component {
         this.fetchData()
     }
 
+    deleteUser= async ()=>{
+        const userId= this.props.match.params.id
+        await axios.delete(`/api/users/${userId}`)
+        this.setState({ redirect: true })
+
+    }
+
     render() {
+        if (this.state.redirect){
+            return <Redirect to='/users' />
+        }
         const user = this.state.user
         return (
 
@@ -58,6 +67,7 @@ export default class SingleUser extends Component {
                         <Card.Description><b>Name:</b> {user.name}</Card.Description>
                         <Card.Description><b>Age:</b> {user.age}</Card.Description>
                         <Card.Description> <b>Location:</b> {user.location}</Card.Description>
+                        <Button onClick={()=> this.deleteUser()}>Delete</Button>
                     </StyledCardContent>
                 </StyledCard>
             </Page>

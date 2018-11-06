@@ -29,7 +29,7 @@ export default class AllUsers extends Component {
         const userList = this.state.users.map((user, i) => {
             return (
                 <div key={i}>
-                    {user.name}
+                    <Link to={`/users/${user.id}`}>{user.name} </Link>
                 </div>
             )
         })
