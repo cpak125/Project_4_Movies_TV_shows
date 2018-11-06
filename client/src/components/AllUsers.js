@@ -19,6 +19,10 @@ export default class AllUsers extends Component {
         this.setState({ users: response.data })
     }
 
+    addNewUser = async()=>{
+        
+    }
+
     render() {
         const userList = this.state.users.map((user, i) => {
             return (
@@ -31,6 +35,7 @@ export default class AllUsers extends Component {
         return (
             <div>
                 <h1>All Users</h1>
+                
                 <div>
                     {userList}
                 </div>
