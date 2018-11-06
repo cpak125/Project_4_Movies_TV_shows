@@ -1,7 +1,19 @@
 import React, { Component } from 'react'
-import { Form, Button, Modal } from 'semantic-ui-react'
+import { Form, Button, Modal, Input } from 'semantic-ui-react'
 import styled from 'styled-components'
 
+const StyledForm = styled(Form)`
+    &&& {
+        width: 30vw; 
+        margin: auto;  
+    }
+`
+const StyledModal = styled(Modal)`
+    &&& {
+        width: 50vw;
+        margin:auto;
+    }
+`
 
 export default class NewUserForm extends Component {
     state = {
@@ -10,7 +22,7 @@ export default class NewUserForm extends Component {
             age: '',
             location: ''
         },
-        modealOpen: false
+        modalOpen: false
     }
 
     handleOpen = () => this.setState({ modalOpen: true })
@@ -29,30 +41,42 @@ export default class NewUserForm extends Component {
             newUser: {
                 name: '',
                 age: '',
-                location:''
+                location: ''
             }
         })
         this.setState({ modalOpen: false })
     }
 
+    show = size => () => this.setState({ size, open: true })
+
     addNewUserModal = () => (
-        <Modal trigger={<Button onClick={this.handleOpen}>(+)</Button>}
-            open={this.state.modalOpen}
-            >
+        <StyledModal trigger={<Button onClick={this.handleOpen}>(+)</Button>}
+            open={this.state.modalOpen} 
+        >
             <Modal.Content form="true">
-                <Form onSubmit={this.handleSubmit}>
-                    <input onChange={this.handleChange} type="text" name="name" value={this.state.newUser.name} placeholder='Name' />
-                    <input onChange={this.handleChange} type="text" name="age" value={this.state.newUser.age} placeholder='Age' />
-                    <input onChange={this.handleChange} type="text" name="location" value={this.state.newUser.location} placeholder='City,State' />
-                    <Button  className='update' type='submit' value='Add Post'>Submit</Button>
-                </Form>
+                <StyledForm onSubmit={this.handleSubmit}>
+                    <Form.Field inline>
+                        <label>Name:</label>
+                        <Input fluid onChange={this.handleChange} type="text" name="name" value={this.state.newUser.name} placeholder='Name' />
+                    </Form.Field>
+                    <Form.Field inline>
+                    <label>Age:  </label>
+                    <Input fluid onChange={this.handleChange} type="text" name="age" value={this.state.newUser.age} placeholder='Age' />
+                    </Form.Field>
+                    <Form.Field inline>
+                    <label>Location:</label>
+                    <Input fluid onChange={this.handleChange} type="text" name="location" value={this.state.newUser.location} placeholder='City, State' />
+                    </Form.Field>
+                    <Button className='update' type='submit' value='Add Post'>Submit</Button>
+                </StyledForm>
             </Modal.Content>
-        </Modal>
+        </StyledModal>
     )
 
     render() {
         return (
-           this.addNewUserModal()
+
+            this.addNewUserModal()
         )
     }
 }
