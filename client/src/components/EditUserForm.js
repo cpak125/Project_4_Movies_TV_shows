@@ -57,7 +57,7 @@ export default class EditUserForm extends Component {
     
 
     editUserModal = () => (
-        <StyledModal trigger={<Button fluid onClick={this.handleOpen}>Edit</Button>}
+        <StyledModal trigger={<Button color='blue' fluid onClick={this.handleOpen}>Edit</Button>}
             open={this.state.modalOpen}
         >
             <Modal.Content form="true">

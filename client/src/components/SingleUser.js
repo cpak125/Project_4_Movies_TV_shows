@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import { Redirect } from 'react-router-dom'
+import { Redirect, Link } from 'react-router-dom'
 import styled from 'styled-components'
 import { Card, Button } from 'semantic-ui-react'
 import EditUserForm from './EditUserForm';
 
-const Page = styled.div`
+const ProfileSection = styled.div`
     padding-top: 20px;
     margin: auto;
     display:flex;
@@ -20,7 +20,7 @@ const StyledCard = styled(Card)`
     }
 `
 
-const StyledCardContent=styled(Card.Content)`
+const StyledCardContent = styled(Card.Content)`
 &&&{
     display:flex;
     flex-direction:column;
@@ -47,42 +47,48 @@ export default class SingleUser extends Component {
         this.fetchData()
     }
 
-    deleteUser= async ()=>{
-        const userId= this.props.match.params.id
+    deleteUser = async () => {
+        const userId = this.props.match.params.id
         await axios.delete(`/api/users/${userId}`)
         this.setState({ redirect: true })
 
     }
 
     render() {
-        if (this.state.redirect){
+        if (this.state.redirect) {
             return <Redirect to='/users' />
         }
         const user = this.state.user
         return (
+            <div>
+                <ProfileSection>
+                    <h1>{user.name}'s Profile</h1>
+                    <StyledCard>
+                        <StyledCardContent>
 
-            <Page>
-                <h1>{user.name}'s Profile</h1>
-                <StyledCard>
-                    <StyledCardContent>
+                            <Card.Description><b>Name:</b> {user.name}</Card.Description>
+                            <Card.Description><b>Age:</b> {user.age}</Card.Description>
+                            <Card.Description> <b>Location:</b> {user.location}</Card.Description>
 
-                        <Card.Description><b>Name:</b> {user.name}</Card.Description>
-                        <Card.Description><b>Age:</b> {user.age}</Card.Description>
-                        <Card.Description> <b>Location:</b> {user.location}</Card.Description>
+                            <Card.Content extra>
+                                <EditUserForm
+                                    userId={this.props.match.params.id}
+                                />
+                            </Card.Content>
 
-                        <Card.Content extra>
-                        <EditUserForm 
-                        userId={this.props.match.params.id} 
-                        />
-                        </Card.Content>
+                            <Card.Content extra>
+                                <Button fluid color='red' onClick={() => this.deleteUser()}>Delete</Button>
+                            </Card.Content>
 
-                        <Card.Content extra>
-                        <Button fluid onClick={()=> this.deleteUser()}>Delete</Button>
-                        </Card.Content>
-                        
-                    </StyledCardContent>
-                </StyledCard>
-            </Page>
+                        </StyledCardContent>
+                    </StyledCard>
+                </ProfileSection>
+
+                <Link to={`/users/${user.id}/movies`}><Button>Movies</Button></Link>
+                <Link to={`/user/${user.id}/tv_shows`}><Button>TV Shows</Button></Link>
+                
+            </div>
+
         )
     }
 }
