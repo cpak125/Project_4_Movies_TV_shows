@@ -3,6 +3,7 @@ import axios from 'axios'
 import { Redirect } from 'react-router-dom'
 import styled from 'styled-components'
 import { Card, Button } from 'semantic-ui-react'
+import EditUserForm from './EditUserForm';
 
 const Page = styled.div`
     padding-top: 20px;
@@ -25,7 +26,7 @@ const StyledCardContent=styled(Card.Content)`
     flex-direction:column;
     justify-content: space-around;
     align-items:left;
-    font-size: 20px;
+    font-size: 18px;
 }
 `
 export default class SingleUser extends Component {
@@ -64,10 +65,21 @@ export default class SingleUser extends Component {
                 <h1>{user.name}'s Profile</h1>
                 <StyledCard>
                     <StyledCardContent>
+
                         <Card.Description><b>Name:</b> {user.name}</Card.Description>
                         <Card.Description><b>Age:</b> {user.age}</Card.Description>
                         <Card.Description> <b>Location:</b> {user.location}</Card.Description>
-                        <Button onClick={()=> this.deleteUser()}>Delete</Button>
+
+                        <Card.Content extra>
+                        <EditUserForm 
+                        userId={this.props.match.params.id} 
+                        />
+                        </Card.Content>
+
+                        <Card.Content extra>
+                        <Button fluid onClick={()=> this.deleteUser()}>Delete</Button>
+                        </Card.Content>
+                        
                     </StyledCardContent>
                 </StyledCard>
             </Page>

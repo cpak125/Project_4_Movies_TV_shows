@@ -47,8 +47,6 @@ export default class NewUserForm extends Component {
         this.setState({ modalOpen: false })
     }
 
-    show = size => () => this.setState({ size, open: true })
-
     addNewUserModal = () => (
         <StyledModal trigger={<Button onClick={this.handleOpen}>(+)</Button>}
             open={this.state.modalOpen} 
