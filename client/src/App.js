@@ -15,8 +15,6 @@ class App extends Component {
           <Route exact path='/users' component={AllUsers} />
           <Route exact path='/users/:id' component={SingleUser} />
           <Route exact path='/users/:user_id/movies' component={UserMovies} />
-          {/* <Route exact path='/addMovie' component={AddMovie} /> */}
-          {/* <Route exact path='/users/:user_id/tv_shows' component={UserTvShows} /> */}
         </Switch>
       </Router>
     );
