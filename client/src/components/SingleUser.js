@@ -73,6 +73,9 @@ export default class SingleUser extends Component {
                             <Card.Content extra>
                                 <EditUserForm
                                     userId={this.props.match.params.id}
+                                    push={this.props.history.push}
+                                    fetchData={this.fetchData()}
+
                                 />
                             </Card.Content>
 

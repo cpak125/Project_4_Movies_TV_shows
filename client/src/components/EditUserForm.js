@@ -47,11 +47,14 @@ export default class EditUserForm extends Component {
         this.setState({ user: updatedUser })
     }
 
-    handleUpdate = async () => {
+    handleUpdate = async (event) => {
         const userId = this.props.userId
         const updatedUser = this.state.user
+        // event.preventDefault()
         await axios.put(`/api/users/${userId}`, updatedUser)
+        // this.props.push(`/users/${userId}`)
         this.setState({ modalOpen: false })
+        // await this.props.fetchData
 
     }
     
