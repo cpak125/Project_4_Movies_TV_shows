@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import { Form, Button, Modal, Input } from 'semantic-ui-react'
 import styled from 'styled-components'
-import { Redirect } from 'react-router-dom'
+// import { Redirect } from 'react-router-dom'
 
 
 const StyledForm = styled(Form)`

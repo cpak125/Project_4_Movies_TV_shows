@@ -7,7 +7,10 @@ export default class MovieResults extends Component {
             return (
                 <MovieResult
                     key={i}
-                    data={movie} />
+                    data={movie}
+                     
+                    addNewMovie={this.props.addNewMovie}
+                    />
                
             )
         })

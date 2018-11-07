@@ -25,7 +25,11 @@ export default class AddMovie extends Component {
                     searching={this.state.searching}
                     toggleSearching={this.toggleSearching} />
 
-                    {this.state.searching ? null : <MovieResults searchResults={this.state.searchResults} />}
+                    {this.state.searching ? null : 
+                    <MovieResults 
+                    searchResults={this.state.searchResults} 
+                    addNewMovie={this.props.addNewMovie}
+                    />}
 
             </div>
         )

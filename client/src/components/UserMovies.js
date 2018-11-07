@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
-import { Card, Button, Modal } from 'semantic-ui-react'
+import { Card, Button } from 'semantic-ui-react'
 import AddMovie from './AddMovie';
 
 
@@ -30,6 +30,13 @@ export default class UserMovies extends Component {
         this.setState({ addMovie: !this.state.addMovie })
     }
 
+    addNewMovie = async (newMovie) => {
+        const userId = this.props.match.params.user_id
+        await axios.post(`/api/users/${userId}/movies`, newMovie)
+        await this.fetchData()
+        this.toggleAddMovie()
+    }
+
     render() {
         const user = this.state.user
         const movieList = this.state.movies.map((movie, i) => {
@@ -47,7 +54,9 @@ export default class UserMovies extends Component {
             <div>
                 <h1>{user.name}'s Movies<Button onClick={this.toggleAddMovie}>(+)</Button></h1>
                 {this.state.addMovie ?
-                <AddMovie /> : '' }
+                    <AddMovie
+                        addNewMovie={this.addNewMovie}
+                    /> : ''}
                 <div>
                     {movieList}
                 </div>
