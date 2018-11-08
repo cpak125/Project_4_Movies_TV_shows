@@ -88,7 +88,7 @@ export default class SingleUser extends Component {
                 </ProfileSection>
 
                 <Link to={`/users/${user.id}/movies`}><Button>Movies</Button></Link>
-                <Link to={`/user/${user.id}/tv_shows`}><Button>TV Shows</Button></Link>
+                <Link to={`/users/${user.id}/tv_shows`}><Button>TV Shows</Button></Link>
                 
             </div>
 

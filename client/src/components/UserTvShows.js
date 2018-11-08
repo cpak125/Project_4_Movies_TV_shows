@@ -79,7 +79,7 @@ export default class UserTvShows extends Component {
         return (
             <div>
                 <h1>{user.name}'s TV Shows<Button onClick={this.toggleAddTVShow}>(+)</Button></h1>
-                {this.state.addMovie ?
+                {this.state.addTVShow ?
                     <AddTVShow
                         toggleAddTVShow={this.toggleAddTVShow}
                         addnewTVShow={this.addnewTVShow}
