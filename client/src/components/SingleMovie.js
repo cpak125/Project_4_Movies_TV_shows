@@ -48,7 +48,7 @@ export default class SingleMovie extends Component {
                 <div><img src={movie.poster_path} alt= 'movie poster' /></div>
                 <p><b>Title:</b> {movie.title}</p>
                 <p><b>Genre(s):</b>{genreNames.toString()}</p>
-                <p><b>Release Date:</b> {movieDetails.release_date} </p>
+                <p><b>Release Date:</b> {movie.release_date} </p>
                 <p><b>Overview:</b> {movie.overview}</p>
                 <button onClick={()=> this.deleteMovie(movie.id)}>Delete Movie</button>
             </div>
