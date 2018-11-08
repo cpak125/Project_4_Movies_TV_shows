@@ -51,10 +51,15 @@ export default class SingleTVShow extends Component {
             <div>
                 <div><img src={tvShow.poster_path} alt='show poster' /></div>
                 <p><b>Name:</b> {tvShow.name}</p>
-                <p><b>Genre(s):</b>{genreNames.toString()}</p>
-                <p><b>Network(s):</b>{networkNames.toString()}</p>
-                <p><b>First Air Date:</b> {tvShow.first_air_date} </p>
+                <p><b>Genre(s):</b> {genreNames.toString()}</p>
                 <p><b>Overview:</b> {tvShow.overview}</p>
+                <p><b>Network(s):</b> {networkNames.toString()}</p>
+                <p><b>First Air Date:</b> {tvShow.first_air_date} </p>
+                <p><b>Total Seasons:</b> {tvShowDetails.number_of_seasons}</p>
+                <p><b>Total Episodes:</b> {tvShowDetails.number_of_episodes}</p>
+                <p><b>Status:</b> {tvShowDetails.status}</p>
+
+
                 <button onClick={() => this.deleteTvShow(tvShow.id)}>Delete TV Show</button>
             </div>
         )

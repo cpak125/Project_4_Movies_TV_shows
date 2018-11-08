@@ -9,7 +9,6 @@
         "postinstall": "npm run build && npm run deploy && echo 'Client built!'"
     },
     "dependencies": {
-        "dotenv": "^6.1.0",
         "semantic-ui-react": "^0.83.0"
     }
 }
