@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 import { Card, Button } from 'semantic-ui-react'
+import AddTVShow from './AddTVShow';
 
 
 export default class UserTvShows extends Component {

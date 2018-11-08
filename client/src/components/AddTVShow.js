@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import TVShowSearch from './TVShowSearch';
+import TVShowResults from './TVShowResults';
 
 export default class AddTVShow extends Component {
     state = {
@@ -18,6 +20,19 @@ export default class AddTVShow extends Component {
   render() {
     return (
       <div>
+          <h1>Add TV Show</h1>
+                    <TVShowSearch
+                    transferResult={this.transferResult}
+                    searching={this.state.searching}
+                    toggleSearching={this.toggleSearching} />
+
+                    {this.state.searching ? null : 
+                    <TVShowResults
+                    searchResults={this.state.searchResults} 
+                    addNewTVShow={this.props.addNewTVShow}
+                    toggleAddTVShow={this.props.toggleAddTVShow}
+                    />}
+
         
       </div>
     )
