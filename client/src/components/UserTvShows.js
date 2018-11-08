@@ -69,7 +69,7 @@ export default class UserTvShows extends Component {
                 <Link key={i} to={`/users/${user.id}/tv_shows/${tvShow.id}`}>
                     <Card >
                         <Card.Content> Name: {tvShow.name} </Card.Content>
-                        <Card.Content> First Air Date: {tvShow.first_air_date} </Card.Content>
+                        {/* <Card.Content> First Air Date: {tvShow.first_air_date} </Card.Content> */}
                         <Card.Content><img src={tvShow.poster_path} alt='show poster' /> </Card.Content>
                         {/* <Card.Content>Overview: {tvShow.overview} </Card.Content> */}
                     </Card>
