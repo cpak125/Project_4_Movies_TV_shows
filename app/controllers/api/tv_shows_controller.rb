@@ -26,7 +26,7 @@ end
 
 private
 def tv_show_params
-    params.require(:tv_show).permit(:tv_id, :title, :genre, :first_air_date, :overview, :networks, :number_of_seasons, :number_of_episodes, :status, :poster_path)
+    params.require(:tv_show).permit(:tv_id, :name, :genre, :first_air_date, :overview, :networks, :number_of_seasons, :number_of_episodes, :status, :poster_path)
 end
 
 end

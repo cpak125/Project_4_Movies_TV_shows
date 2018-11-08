@@ -13,8 +13,8 @@ export default class TVShowResults extends Component {
                     first_air_date={tvShow.first_air_date}
                     poster_path={poster_path}
                     overview={tvShow.overview}
-                    addNewtvShow={this.props.addNewtvShow}
-                    toggleAddtvShow={this.props.toggleAddtvShow}
+                    addNewTVShow={this.props.addNewTVShow}
+                    toggleAddTVShow={this.props.toggleAddTVShow}
                 />
 
             )

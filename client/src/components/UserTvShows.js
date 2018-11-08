@@ -82,7 +82,7 @@ export default class UserTvShows extends Component {
                 {this.state.addTVShow ?
                     <AddTVShow
                         toggleAddTVShow={this.toggleAddTVShow}
-                        addnewTVShow={this.addnewTVShow}
+                        addNewTVShow={this.addNewTVShow}
                     /> : ''}
                 <div>
                     {tvShowsList}
