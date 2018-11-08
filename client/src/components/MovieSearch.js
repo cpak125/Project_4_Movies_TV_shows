@@ -13,7 +13,7 @@ export default class MovieSearch extends Component {
     searchButtonHandler = async () => {
         const response = await axios.get(`https://api.themoviedb.org/3/search/movie?query=${this.state.searchQuery}&api_key=0832ef538fd529b929aeda8e57b1c0ed`)
         console.log(response.data)
-        this.props.transferResult(response.data)
+        this.props.transferResult(response)
         this.props.toggleSearching()
       }
     

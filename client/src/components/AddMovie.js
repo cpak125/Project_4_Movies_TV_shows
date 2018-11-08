@@ -9,7 +9,7 @@ export default class AddMovie extends Component {
     }
 
     transferResult = (response) => {
-        this.setState({ searchResults: response.results})
+        this.setState({ searchResults: response.data.results})
     }
 
     toggleSearching = () => {
@@ -29,6 +29,7 @@ export default class AddMovie extends Component {
                     <MovieResults 
                     searchResults={this.state.searchResults} 
                     addNewMovie={this.props.addNewMovie}
+                    toggleAddMovie={this.props.toggleAddMovie}
                     />}
 
             </div>

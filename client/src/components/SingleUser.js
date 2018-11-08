@@ -35,16 +35,16 @@ export default class SingleUser extends Component {
         redirect: false
     }
 
+    async componentDidMount() {
+        this.fetchData()
+    }
+
     fetchData = async () => {
         const userId = this.props.match.params.id
         const responseUser = await axios.get(`/api/users/${userId}`)
         this.setState({
             user: responseUser.data
         })
-    }
-
-    async componentDidMount() {
-        this.fetchData()
     }
 
     deleteUser = async () => {

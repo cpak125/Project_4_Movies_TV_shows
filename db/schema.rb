@@ -16,11 +16,12 @@ ActiveRecord::Schema.define(version: 2018_11_05_222449) do
   enable_extension "plpgsql"
 
   create_table "movies", force: :cascade do |t|
+    t.integer "movie_id"
     t.string "title"
     t.string "genre"
     t.string "release_date"
     t.string "overview"
-    t.string "img_url"
+    t.string "poster_path"
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -28,6 +29,7 @@ ActiveRecord::Schema.define(version: 2018_11_05_222449) do
   end
 
   create_table "tv_shows", force: :cascade do |t|
+    t.integer "tv_id"
     t.string "title"
     t.string "genre"
     t.string "first_air_date"
@@ -36,7 +38,7 @@ ActiveRecord::Schema.define(version: 2018_11_05_222449) do
     t.integer "number_of_seasons"
     t.integer "number_of_episodes"
     t.string "status"
-    t.string "img_url"
+    t.string "poster_path"
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
