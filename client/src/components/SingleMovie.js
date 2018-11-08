@@ -38,10 +38,11 @@ export default class SingleMovie extends Component {
 
         return (
             <div>
-                <div>{movie.poster_path}</div>
-                <p>movie id:{movie.movie_id}</p>
+                <div><img src={movie.poster_path} alt= 'movie poster' /></div>
+                <p>Title: {movie.title}</p>
                 <p>Genre(s):{genreNames.toString()}</p>
-                <p>Budget: {movieDetails.budget} </p>
+                <p>Release Date: {movieDetails.release_date} </p>
+                <p>Overview: {movie.overview}</p>
             </div>
         )
     }
