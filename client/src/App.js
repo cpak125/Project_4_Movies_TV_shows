@@ -4,6 +4,7 @@ import LandingPage from './components/LandingPage';
 import AllUsers from './components/AllUsers';
 import SingleUser from './components/SingleUser';
 import UserMovies from './components/UserMovies';
+import SingleMovie from './components/SingleMovie';
 
 
 class App extends Component {
@@ -15,6 +16,7 @@ class App extends Component {
           <Route exact path='/users' component={AllUsers} />
           <Route exact path='/users/:id' component={SingleUser} />
           <Route exact path='/users/:user_id/movies' component={UserMovies} />
+          <Route exact path='/users/:user_id/movies/:id' component={SingleMovie} />
         </Switch>
       </Router>
     );

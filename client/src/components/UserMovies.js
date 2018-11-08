@@ -70,7 +70,7 @@ export default class UserMovies extends Component {
                     <Card >
                         <Card.Content> Title: {movie.title} </Card.Content>
                         <Card.Content> Release Date: {movie.release_date} </Card.Content>
-                        <Card.Content><img src={movie.poster_path} /> </Card.Content>
+                        <Card.Content><img src={movie.poster_path} alt='movie poster' /> </Card.Content>
                         {/* <Card.Content>Overview: {movie.overview} </Card.Content> */}
                     </Card>
                 </Link>
