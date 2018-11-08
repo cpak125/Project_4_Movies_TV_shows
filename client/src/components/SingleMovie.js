@@ -25,7 +25,7 @@ export default class SingleMovie extends Component {
     }
 
     fetchMovieDetails = async (movie_id) => {
-        return await axios.get(`https://api.themoviedb.org/3/movie/${movie_id}?api_key=0832ef538fd529b929aeda8e57b1c0ed`)
+        return await axios.get(`https://api.themoviedb.org/3/movie/${movie_id}?api_key=${process.env.REACT_APP_API_KEY}`)
     }
 
     deleteMovie = async(movieId) => {
