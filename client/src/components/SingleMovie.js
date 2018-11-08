@@ -28,6 +28,13 @@ export default class SingleMovie extends Component {
         return await axios.get(`https://api.themoviedb.org/3/movie/${movie_id}?api_key=0832ef538fd529b929aeda8e57b1c0ed`)
     }
 
+    deleteMovie = async(movieId) => {
+        const userId = this.props.match.params.user_id
+        await axios.delete(`/api/users/${userId}/movies/${movieId}`)
+        this.props.history.push(`/users/${userId}/movies`)
+        
+    }
+
     render() {
         const movie = this.state.movie
         const movieDetails = this.state.movieDetails
@@ -39,10 +46,11 @@ export default class SingleMovie extends Component {
         return (
             <div>
                 <div><img src={movie.poster_path} alt= 'movie poster' /></div>
-                <p>Title: {movie.title}</p>
-                <p>Genre(s):{genreNames.toString()}</p>
-                <p>Release Date: {movieDetails.release_date} </p>
-                <p>Overview: {movie.overview}</p>
+                <p><b>Title:</b> {movie.title}</p>
+                <p><b>Genre(s):</b>{genreNames.toString()}</p>
+                <p><b>Release Date:</b> {movieDetails.release_date} </p>
+                <p><b>Overview:</b> {movie.overview}</p>
+                <button onClick={()=> this.deleteMovie(movie.id)}>Delete Movie</button>
             </div>
         )
     }
