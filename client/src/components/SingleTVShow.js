@@ -29,6 +29,12 @@ export default class SingleTVShow extends Component {
         return await axios.get(`https://api.themoviedb.org/3/tv/${tv_id}?api_key=0832ef538fd529b929aeda8e57b1c0ed`)
     }
 
+    deleteTvShow = async(tvShowId) => {
+        const userId = this.props.match.params.user_id
+        await axios.delete(`/api/users/${userId}/tv_shows/${tvShowId}`)
+        this.props.history.push(`/users/${userId}/tv_shows`)
+        
+    }
 
 
     render() {
@@ -49,7 +55,7 @@ export default class SingleTVShow extends Component {
                 <p><b>Network(s):</b>{networkNames.toString()}</p>
                 <p><b>First Air Date:</b> {tvShow.first_air_date} </p>
                 <p><b>Overview:</b> {tvShow.overview}</p>
-                {/* <button onClick={() => this.deleteMovie(movie.id)}>Delete Movie</button> */}
+                <button onClick={() => this.deleteTvShow(tvShow.id)}>Delete TV Show</button>
             </div>
         )
     }
