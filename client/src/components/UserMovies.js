@@ -9,7 +9,6 @@ export default class UserMovies extends Component {
     state = {
         user: {},
         movies: [],
-        addMovie: false,
         newMovie: {
             title: '',
             movie_id: '',
@@ -33,9 +32,6 @@ export default class UserMovies extends Component {
         await this.fetchData()
     }
 
-    toggleAddMovie = () => {
-        this.setState({ addMovie: !this.state.addMovie })
-    }
 
     addNewMovie = async (title, movie_id, release_date, overview, poster_path) => {
         const newMovie = { ...this.state.newMovie }
@@ -48,42 +44,45 @@ export default class UserMovies extends Component {
         this.handleSubmitMovie()
     }
 
-    handleSubmitMovie = async ()=> {
+    handleSubmitMovie = async () => {
         const userId = this.props.match.params.user_id
         await axios.post(`/api/users/${userId}/movies`, this.state.newMovie)
         await this.fetchData()
-        this.setState({newMovie:{
-            title: '',
-            movie_id: '',
-            release_date: '',
-            overview: '',
-            poster_path: ''
-        }})
+        this.setState({
+            newMovie: {
+                title: '',
+                movie_id: '',
+                release_date: '',
+                overview: '',
+                poster_path: '',
+            }
+        })
 
     }
 
     render() {
+
         const user = this.state.user
         const movieList = this.state.movies.map((movie, i) => {
             return (
                 <Link key={i} to={`/users/${user.id}/movies/${movie.id}`}>
                     <Card >
                         <Card.Content> Title: {movie.title} </Card.Content>
-                        {/* <Card.Content> Release Date: {movie.release_date} </Card.Content> */}
                         <Card.Content><img src={movie.poster_path} alt='movie poster' /> </Card.Content>
-                        {/* <Card.Content>Overview: {movie.overview} </Card.Content> */}
                     </Card>
                 </Link>
             )
         })
         return (
             <div>
-                <h1>{user.name}'s Movies<Button onClick={this.toggleAddMovie}>(+)</Button></h1>
-                {this.state.addMovie ?
-                    <AddMovie
-                        toggleAddMovie={this.toggleAddMovie}
-                        addNewMovie={this.addNewMovie}
-                    /> : ''}
+                <h1>{user.name}'s Movies</h1>
+
+                <AddMovie
+                    addNewMovie={this.addNewMovie}
+                    userId={this.props.match.params.user_id}
+                    
+                />
+
                 <div>
                     {movieList}
                 </div>
