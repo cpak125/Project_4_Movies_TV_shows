@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
-import { Card, Button } from 'semantic-ui-react'
+import { Card, Button, Icon } from 'semantic-ui-react'
 import EditUserForm from './EditUserForm';
 
 const ProfileSection = styled.div`
@@ -13,13 +13,23 @@ const ProfileSection = styled.div`
     align-items: center;
 `
 
+const Footer = styled.div`
+    display:flex;
+    flex-direction:row;
+    justify-content:space-evenly;
+    padding-top:40px;
+    Button{
+        width:30vw;
+        margin:auto;
+    }
+`
+
 const StyledCard = styled(Card)`
     &&&{
         width: 30vw;
         height: 300px;
     }
 `
-
 const StyledCardContent = styled(Card.Content)`
 &&&{
     display:flex;
@@ -27,12 +37,13 @@ const StyledCardContent = styled(Card.Content)`
     justify-content: space-around;
     align-items:left;
     font-size: 18px;
+    padding-bottom: 5px;
 }
 `
+
 export default class SingleUser extends Component {
     state = {
-        user: {},
-        redirect: false
+        user: {}
     }
 
     async componentDidMount() {
@@ -75,7 +86,12 @@ export default class SingleUser extends Component {
                             </Card.Content>
 
                             <Card.Content extra>
-                                <Button fluid color='red' onClick={() => this.deleteUser()}>Delete</Button>
+                                <Button
+                                    fluid
+                                    size='medium'
+                                    color='red'
+                                    onClick={() => this.deleteUser()}>Delete Profile
+                                </Button>
                             </Card.Content>
 
                         </StyledCardContent>
@@ -83,8 +99,28 @@ export default class SingleUser extends Component {
                 </ProfileSection>
 
                 <Footer>
-                <Link to={`/users/${user.id}/movies`}><Button>Movies</Button></Link>
-                <Link to={`/users/${user.id}/tv_shows`}><Button>TV Shows</Button></Link>
+                    <Link to={`/users/${user.id}/movies`}>
+                        <Button  size='big' color='green' animated='fade'>
+                            <Button.Content visible>
+                                <Icon name='film' size='big' />
+                            </Button.Content>
+                            <Button.Content hidden>
+                                See Favorite Movies
+                        </Button.Content>
+                        </Button>
+                    </Link>
+
+                    <Link to={`/users/${user.id}/tv_shows`}>
+                        <Button  size='big' color='green' animated='fade'>
+                            <Button.Content visible>
+                                <Icon name='tv' size='big' />
+                            </Button.Content>
+                            <Button.Content hidden>
+                                See Favorite TV Shows
+                        </Button.Content>
+
+                        </Button>
+                    </Link>
                 </Footer>
 
             </div>
