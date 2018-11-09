@@ -11,12 +11,18 @@ const Page = styled.div`
  `
 
 const UserListContainer = styled.div`
-margin:auto;
  font-size: 20px;
  display:flex;
  flex-direction: column;
  align-content: space-between;
+ justify-content:space-between;
  align-items: center;
+ padding-top:20px;
+ `
+
+const StyledUser = styled.div`
+ padding-top:10px;
+ padding-bottom:10px;
  `
 
 export default class AllUsers extends Component {
@@ -42,9 +48,9 @@ export default class AllUsers extends Component {
     render() {
         const userList = this.state.users.map((user, i) => {
             return (
-
-                <Link to={`/users/${user.id}`} key={i}>{user.name} </Link>
-
+                <StyledUser key={i}>
+                    <Link to={`/users/${user.id}`} >{user.name} </Link>
+                </StyledUser>
             )
         })
 
@@ -52,7 +58,7 @@ export default class AllUsers extends Component {
             <div>
                 <Page>
 
-                    <h1>All Users<NewUserForm
+                    <h1>Users <NewUserForm
                         addNewUser={this.addNewUser}
                     />
                     </h1>

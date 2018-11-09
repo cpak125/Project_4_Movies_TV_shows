@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Form, Button, Modal, Input } from 'semantic-ui-react'
+import { Form, Button, Modal, Input, Icon } from 'semantic-ui-react'
 import styled from 'styled-components'
 
 const StyledForm = styled(Form)`
@@ -14,6 +14,12 @@ const StyledModal = styled(Modal)`
         margin:auto;
     }
 `
+
+// const StyledIcon = styled(Icon)`
+// &&& :hover{
+//     background-color:white;
+// }
+// `
 
 export default class NewUserForm extends Component {
     state = {
@@ -48,8 +54,10 @@ export default class NewUserForm extends Component {
     }
 
     addNewUserModal = () => (
-        <StyledModal trigger={<Button onClick={this.handleOpen}>(+)</Button>}
-            open={this.state.modalOpen} 
+        <StyledModal
+            trigger={<Icon link color='green' name='user plus' onClick={this.handleOpen}>
+            </Icon>}
+            open={this.state.modalOpen}
         >
             <Modal.Content form="true">
                 <StyledForm onSubmit={this.handleSubmit}>
@@ -58,12 +66,12 @@ export default class NewUserForm extends Component {
                         <Input fluid onChange={this.handleChange} type="text" name="name" value={this.state.newUser.name} placeholder='Name' />
                     </Form.Field>
                     <Form.Field inline>
-                    <label>Age:  </label>
-                    <Input fluid onChange={this.handleChange} type="text" name="age" value={this.state.newUser.age} placeholder='Age' />
+                        <label>Age:  </label>
+                        <Input fluid onChange={this.handleChange} type="text" name="age" value={this.state.newUser.age} placeholder='Age' />
                     </Form.Field>
                     <Form.Field inline>
-                    <label>Location:</label>
-                    <Input fluid onChange={this.handleChange} type="text" name="location" value={this.state.newUser.location} placeholder='City, State' />
+                        <label>Location:</label>
+                        <Input fluid onChange={this.handleChange} type="text" name="location" value={this.state.newUser.location} placeholder='City, State' />
                     </Form.Field>
                     <Button className='update' type='submit' value='Add Post'>Submit</Button>
                 </StyledForm>
