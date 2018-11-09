@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
-import { Card, Button } from 'semantic-ui-react'
+import { Card } from 'semantic-ui-react'
 import AddMovie from './AddMovie';
 
 
@@ -77,14 +77,10 @@ export default class UserMovies extends Component {
             <div>
                 <h1>{user.name}'s Movies</h1>
 
-                <AddMovie
-                    addNewMovie={this.addNewMovie}
-                    userId={this.props.match.params.user_id}
-                    
-                />
+                <AddMovie addNewMovie={this.addNewMovie}/>
 
                 <div>
-                    {movieList}
+                    {movieList.reverse()}
                 </div>
             </div>
         )

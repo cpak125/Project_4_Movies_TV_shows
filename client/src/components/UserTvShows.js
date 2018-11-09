@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
-import { Card, Button } from 'semantic-ui-react'
+import { Card } from 'semantic-ui-react'
 import AddTVShow from './AddTVShow';
 
 
@@ -48,17 +48,19 @@ export default class UserTvShows extends Component {
         this.handleSubmitTVShow()
     }
 
-    handleSubmitTVShow = async ()=> {
+    handleSubmitTVShow = async () => {
         const userId = this.props.match.params.user_id
         await axios.post(`/api/users/${userId}/tv_shows`, this.state.newTVShow)
         await this.fetchData()
-        this.setState({newTVShow:{
-            name: '',
-            tv_id: '',
-            first_air_date: '',
-            overview: '',
-            poster_path: ''
-        }})
+        this.setState({
+            newTVShow: {
+                name: '',
+                tv_id: '',
+                first_air_date: '',
+                overview: '',
+                poster_path: ''
+            }
+        })
 
     }
 
@@ -69,23 +71,19 @@ export default class UserTvShows extends Component {
                 <Link key={i} to={`/users/${user.id}/tv_shows/${tvShow.id}`}>
                     <Card >
                         <Card.Content> Name: {tvShow.name} </Card.Content>
-                        {/* <Card.Content> First Air Date: {tvShow.first_air_date} </Card.Content> */}
                         <Card.Content><img src={tvShow.poster_path} alt='show poster' /> </Card.Content>
-                        {/* <Card.Content>Overview: {tvShow.overview} </Card.Content> */}
                     </Card>
                 </Link>
             )
         })
         return (
             <div>
-                <h1>{user.name}'s TV Shows<Button onClick={this.toggleAddTVShow}>(+)</Button></h1>
-                {this.state.addTVShow ?
-                    <AddTVShow
-                        toggleAddTVShow={this.toggleAddTVShow}
-                        addNewTVShow={this.addNewTVShow}
-                    /> : ''}
+                <h1>{user.name}'s TV Shows</h1>
+
+                <AddTVShow addNewTVShow={this.addNewTVShow} />
+                
                 <div>
-                    {tvShowsList}
+                    {tvShowsList.reverse()}
                 </div>
             </div>
         )

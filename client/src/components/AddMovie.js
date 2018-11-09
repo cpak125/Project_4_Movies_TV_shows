@@ -40,8 +40,8 @@ export default class AddMovie extends Component {
     }
 
 
-    resetSearch = async () => {
-        await this.setState({
+    resetSearch =  () => {
+         this.setState({
             searchQuery: '',
             searchResults: [],
             searching: !this.state.searching
@@ -49,34 +49,45 @@ export default class AddMovie extends Component {
 
     }
 
+    handleKeyPress = (event) => {
+        if(event.key == 'Enter'){
+          this.searchButtonHandler()
+        }
+      }
+
     render() {
+        
         return (
             <div>
-                <Modal trigger={<Button onClick={this.handleOpen} >Add a Movie</Button>} closeIcon
+                <Modal trigger={<Button onClick={this.handleOpen} >Add a Movie</Button>} 
+                closeIcon
                 open={this.state.modalOpen}
                 onClose={this.handleClose}
                 >
                     <Modal.Content>
                         <h1>Search for a Movie</h1>
-                    </Modal.Content>
+                   
 
-                    <Modal.Content>
-                        <Input focus placeholder="Search..." value={this.state.searchQuery} onChange={this.inputChangeHandler} />
+                        <Input 
+                        type='text' 
+                        focus placeholder="Search..." 
+                        value={this.state.searchQuery} 
+                        onChange={this.inputChangeHandler} 
+                        onKeyPress={this.handleKeyPress} />
+                        
                         {this.state.searching ?
-                            <button onClick={this.newSearchHandler}>New Search</button> :
+                            <button onClick={this.newSearchHandler} >New Search</button> :
                             <button onClick={this.searchButtonHandler}>Search</button>
 
                         }
-                    </Modal.Content>
 
-                    <Modal.Content>
                         {this.state.searching ?
                             <MovieResults
                                 searchResults={this.state.searchResults}
                                 addNewMovie={this.props.addNewMovie}
-                                toggleAddMovie={this.props.toggleAddMovie}
+                                // toggleAddMovie={this.props.toggleAddMovie}
                                 resetSearch={this.resetSearch}
-                                userId={this.props.userId}
+                                // userId={this.props.userId}
                                 handleClose={this.handleClose}
                             /> :
                             null

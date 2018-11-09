@@ -14,7 +14,9 @@ export default class TVShowResults extends Component {
                     poster_path={poster_path}
                     overview={tvShow.overview}
                     addNewTVShow={this.props.addNewTVShow}
-                    toggleAddTVShow={this.props.toggleAddTVShow}
+                    // toggleAddTVShow={this.props.toggleAddTVShow}
+                    resetSearch={this.props.resetSearch}
+                    handleClose={this.props.handleClose}
                 />
 
             )

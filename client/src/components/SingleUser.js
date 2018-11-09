@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import { Redirect, Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import { Card, Button } from 'semantic-ui-react'
 import EditUserForm from './EditUserForm';
@@ -36,7 +36,7 @@ export default class SingleUser extends Component {
     }
 
     async componentDidMount() {
-        this.fetchData()
+        await this.fetchData()
     }
 
     fetchData = async () => {
@@ -50,14 +50,10 @@ export default class SingleUser extends Component {
     deleteUser = async () => {
         const userId = this.props.match.params.id
         await axios.delete(`/api/users/${userId}`)
-        this.setState({ redirect: true })
-
+        this.props.history.push(`/users`)
     }
 
     render() {
-        if (this.state.redirect) {
-            return <Redirect to='/users' />
-        }
         const user = this.state.user
         return (
             <div>
@@ -74,8 +70,7 @@ export default class SingleUser extends Component {
                                 <EditUserForm
                                     userId={this.props.match.params.id}
                                     push={this.props.history.push}
-                                    fetchData={this.fetchData()}
-
+                                    fetchData={this.fetchData}
                                 />
                             </Card.Content>
 
@@ -87,9 +82,11 @@ export default class SingleUser extends Component {
                     </StyledCard>
                 </ProfileSection>
 
+                <Footer>
                 <Link to={`/users/${user.id}/movies`}><Button>Movies</Button></Link>
                 <Link to={`/users/${user.id}/tv_shows`}><Button>TV Shows</Button></Link>
-                
+                </Footer>
+
             </div>
 
         )

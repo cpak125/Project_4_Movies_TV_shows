@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import { Form, Button, Modal, Input } from 'semantic-ui-react'
 import styled from 'styled-components'
-// import { Redirect } from 'react-router-dom'
 
 
 const StyledForm = styled(Form)`
@@ -50,14 +49,13 @@ export default class EditUserForm extends Component {
     handleUpdate = async (event) => {
         const userId = this.props.userId
         const updatedUser = this.state.user
-        // event.preventDefault()
+        event.preventDefault()
         await axios.put(`/api/users/${userId}`, updatedUser)
-        // this.props.push(`/users/${userId}`)
         this.setState({ modalOpen: false })
-        // await this.props.fetchData
+        this.props.fetchData()
 
     }
-    
+
 
     editUserModal = () => (
         <StyledModal trigger={<Button color='blue' fluid onClick={this.handleOpen}>Edit</Button>}
@@ -71,11 +69,11 @@ export default class EditUserForm extends Component {
                     </Form.Field>
                     <Form.Field inline>
                         <label>Age:  </label>
-                        <Input fluid onChange={this.handleChange} type="text" name="age" value={this.state.user.age}  />
+                        <Input fluid onChange={this.handleChange} type="text" name="age" value={this.state.user.age} />
                     </Form.Field>
                     <Form.Field inline>
                         <label>Location:</label>
-                        <Input fluid onChange={this.handleChange} type="text" name="location" value={this.state.user.location}  />
+                        <Input fluid onChange={this.handleChange} type="text" name="location" value={this.state.user.location} />
                     </Form.Field>
                     <Button floated='right' type='submit' value='Update'>Update</Button>
                 </StyledForm>
@@ -83,13 +81,8 @@ export default class EditUserForm extends Component {
         </StyledModal>
     )
 
-
-
     render() {
-        // const userId = this.props.match.params.id
-        // if (this.state.redirect){
-        //     return <Redirect to=`/users/{userId}` />
-        // }
+
         return (
             this.editUserModal()
         )
