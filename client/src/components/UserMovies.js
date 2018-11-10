@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
-import { Card } from 'semantic-ui-react'
+import { Card, Image, CardContent } from 'semantic-ui-react'
 import AddMovie from './AddMovie';
 
 
@@ -65,19 +65,21 @@ export default class UserMovies extends Component {
         const user = this.state.user
         const movieList = this.state.movies.map((movie, i) => {
             return (
-                <Link key={i} to={`/users/${user.id}/movies/${movie.id}`}>
-                    <Card >
-                        <Card.Content> Title: {movie.title} </Card.Content>
-                        <Card.Content><img src={movie.poster_path} alt='movie poster' /> </Card.Content>
+               
+                    <Card key={i} href={`/users/${user.id}/movies/${movie.id}`} >
+                        <Card.Content >
+                            <Card.Header textAlign='center'> {movie.title} </Card.Header>
+                            <Image fluid src={movie.poster_path} alt='movie poster' />
+                        </Card.Content>
                     </Card>
-                </Link>
+              
             )
         })
         return (
             <div>
                 <h1>{user.name}'s Movies</h1>
 
-                <AddMovie addNewMovie={this.addNewMovie}/>
+                <AddMovie addNewMovie={this.addNewMovie} />
 
                 <div>
                     {movieList.reverse()}
