@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import axios from 'axios'
 import styled from 'styled-components'
 import NewUserForm from './NewUserForm';
+import { Icon } from 'semantic-ui-react';
 
 const Page = styled.div`
  display: flex;
@@ -25,6 +26,13 @@ const StyledUser = styled.div`
  padding-top:10px;
  padding-bottom:10px;
  `
+
+const StyledIcon = styled(Icon)`
+&&& {
+    padding-left: 10px; 
+    padding-top: 10px;  
+}
+`
 
 export default class AllUsers extends Component {
 
@@ -57,8 +65,8 @@ export default class AllUsers extends Component {
 
         return (
             <div>
+                <Link to='/'><StyledIcon size='big' name='home'></StyledIcon></Link>
                 <Page>
-
                     <h1>Users <NewUserForm
                         addNewUser={this.addNewUser}
                     />
