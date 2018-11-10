@@ -45,8 +45,7 @@ export default class EditUserForm extends Component {
         this.getUser()
     }
 
-
-
+  
     handleChange = (event) => {
         const updatedUser = { ...this.state.user }
         updatedUser[event.target.name] = event.target.value

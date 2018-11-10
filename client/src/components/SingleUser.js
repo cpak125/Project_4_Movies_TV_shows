@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
-import { Card, Button, Icon, Menu } from 'semantic-ui-react'
+import { Card, Button, Icon, Menu, Confirm } from 'semantic-ui-react'
 import EditUserForm from './EditUserForm';
 
 const ProfileSection = styled.div`
@@ -47,7 +47,8 @@ const StyledCardContent = styled(Card.Content)`
 
 export default class SingleUser extends Component {
     state = {
-        user: {}
+        user: {},
+        confirmOpen: false
     }
 
     async componentDidMount() {
@@ -66,20 +67,29 @@ export default class SingleUser extends Component {
         const userId = this.props.match.params.id
         await axios.delete(`/api/users/${userId}`)
         this.props.history.push(`/users`)
+        this.handleConfirm()
     }
+
+  showConfirm = () => this.setState({ confirmOpen: true })
+
+  handleConfirm = () => this.setState({ confirmOpen: false })
+
+  handleCancel = () => this.setState({ confirmOpen: false })
+
 
     render() {
         const user = this.state.user
         return (
             <div>
-                <Menu icon='labeled' inverted>
+                <Menu size='small' icon='labeled' inverted>
                     <Menu.Item as={Link} to='/'>
-                        <Icon size='large' link name='home' /> Home
+                        <Icon link name='home' /> Home
                     </Menu.Item>
                     <Menu.Item as={Link} to='/users'>
-                        <Icon size='large' link name='users' /> All Users
+                        <Icon link name='users' /> All Users
                     </Menu.Item>
                 </Menu>
+
                 <ProfileSection>
                     <h1>{user.name}'s Profile</h1>
                     <StyledCard>
@@ -102,8 +112,17 @@ export default class SingleUser extends Component {
                                     fluid
                                     size='medium'
                                     color='red'
-                                    onClick={() => this.deleteUser()}>Delete Profile
+                                    onClick={this.showConfirm}>Delete Profile
                                 </Button>
+                                <Confirm
+                                    open={this.state.confirmOpen}
+                                    content={`Are you sure you want to delete ${user.name}'s profile? `}
+                                    cancelButton='No'
+                                    confirmButton="Yes"  
+                                    size='tiny'                        
+                                    onCancel={this.handleCancel}
+                                    onConfirm={() => this.deleteUser()}  />
+
                             </Card.Content>
 
                         </StyledCardContent>
