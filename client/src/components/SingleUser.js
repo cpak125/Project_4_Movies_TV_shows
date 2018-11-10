@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
-import { Card, Button, Icon } from 'semantic-ui-react'
+import { Card, Button, Icon, Menu } from 'semantic-ui-react'
 import EditUserForm from './EditUserForm';
 
 const ProfileSection = styled.div`
@@ -72,6 +72,14 @@ export default class SingleUser extends Component {
         const user = this.state.user
         return (
             <div>
+                <Menu icon='labeled' inverted>
+                    <Menu.Item as={Link} to='/'>
+                        <Icon size='large' link name='home' /> Home
+                    </Menu.Item>
+                    <Menu.Item as={Link} to='/users'>
+                        <Icon size='large' link name='users' /> All Users
+                    </Menu.Item>
+                </Menu>
                 <ProfileSection>
                     <h1>{user.name}'s Profile</h1>
                     <StyledCard>
@@ -104,7 +112,7 @@ export default class SingleUser extends Component {
 
                 <Footer>
                     <Link to={`/users/${user.id}/movies`}>
-                        <Button  size='big' color='green' animated='fade'>
+                        <Button size='big' color='green' animated='fade'>
                             <Button.Content visible>
                                 <Icon name='film' size='big' />
                             </Button.Content>
@@ -115,7 +123,7 @@ export default class SingleUser extends Component {
                     </Link>
 
                     <Link to={`/users/${user.id}/tv_shows`}>
-                        <Button  size='big' color='green' animated='fade'>
+                        <Button size='big' color='green' animated='fade'>
                             <Button.Content visible>
                                 <Icon name='tv' size='big' />
                             </Button.Content>

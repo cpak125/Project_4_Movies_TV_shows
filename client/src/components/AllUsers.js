@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import axios from 'axios'
 import styled from 'styled-components'
 import NewUserForm from './NewUserForm';
-import { Icon } from 'semantic-ui-react';
+import { Icon, Menu } from 'semantic-ui-react';
 
 const Page = styled.div`
  display: flex;
@@ -65,7 +65,11 @@ export default class AllUsers extends Component {
 
         return (
             <div>
-                <Link to='/'><StyledIcon size='big' name='home'></StyledIcon></Link>
+                <Menu icon='labeled' inverted>
+                    <Menu.Item as={Link} to='/'>
+                        <Icon size='large' link name='home' /> Home
+                    </Menu.Item>
+                </Menu>
                 <Page>
                     <h1>Users <NewUserForm
                         addNewUser={this.addNewUser}
