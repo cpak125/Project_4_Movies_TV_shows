@@ -8,6 +8,7 @@ const Page = styled.div`
  display: flex;
  flex-direction: column;
  align-items: center;
+ padding-top:40px;
  `
 
 const UserListContainer = styled.div`
@@ -17,7 +18,7 @@ const UserListContainer = styled.div`
  align-content: space-between;
  justify-content:space-between;
  align-items: center;
- padding-top:20px;
+ padding-top:30px;
  `
 
 const StyledUser = styled.div`

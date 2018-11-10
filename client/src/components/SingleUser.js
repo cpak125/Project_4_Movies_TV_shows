@@ -11,6 +11,10 @@ const ProfileSection = styled.div`
     display:flex;
     flex-direction: column;
     align-items: center;
+    Button{
+        font-size: 40px;
+    }
+
 `
 
 const Footer = styled.div`
@@ -20,7 +24,6 @@ const Footer = styled.div`
     padding-top:40px;
     Button{
         width:30vw;
-        margin:auto;
     }
 `
 
@@ -28,6 +31,7 @@ const StyledCard = styled(Card)`
     &&&{
         width: 30vw;
         height: 300px;
+        background-color:lightgray;
     }
 `
 const StyledCardContent = styled(Card.Content)`

@@ -8,6 +8,7 @@ const StyledForm = styled(Form)`
     &&& {
         width: 30vw; 
         margin: auto;  
+        font-size: 16px;
     }
 `
 const StyledModal = styled(Modal)`
@@ -75,7 +76,7 @@ export default class EditUserForm extends Component {
                         <label>Location:</label>
                         <Input fluid onChange={this.handleChange} type="text" name="location" value={this.state.user.location} />
                     </Form.Field>
-                    <Button floated='right' type='submit' value='Update'>Update</Button>
+                    <Button  size='large' color='green' floated='right' type='submit' value='Update'>Update</Button>
                 </StyledForm>
             </Modal.Content>
         </StyledModal>

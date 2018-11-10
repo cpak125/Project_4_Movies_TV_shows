@@ -5,21 +5,17 @@ import styled from 'styled-components'
 const StyledForm = styled(Form)`
     &&& {
         width: 30vw; 
-        margin: auto;  
+        margin: 0 auto;  
     }
 `
 const StyledModal = styled(Modal)`
     &&& {
         width: 50vw;
-        margin:auto;
+        margin: 0 auto;
+        padding-bottom: 10px;
+
     }
 `
-
-// const StyledIcon = styled(Icon)`
-// &&& :hover{
-//     background-color:white;
-// }
-// `
 
 export default class NewUserForm extends Component {
     state = {
@@ -32,6 +28,16 @@ export default class NewUserForm extends Component {
     }
 
     handleOpen = () => this.setState({ modalOpen: true })
+
+    handleClose = () => this.setState({
+        modalOpen: false,
+        newUser: {
+            name: '',
+            age: '',
+            location: ''
+        }
+    })
+
 
     handleChange = (event) => {
         const newUser = { ...this.state.newUser }
@@ -48,9 +54,9 @@ export default class NewUserForm extends Component {
                 name: '',
                 age: '',
                 location: ''
-            }
+            },
+            modalOpen: false
         })
-        this.setState({ modalOpen: false })
     }
 
     addNewUserModal = () => (
@@ -59,6 +65,7 @@ export default class NewUserForm extends Component {
             </Icon>}
             open={this.state.modalOpen}
         >
+            <Modal.Header>Create New User</Modal.Header>
             <Modal.Content form="true">
                 <StyledForm onSubmit={this.handleSubmit}>
                     <Form.Field inline>
@@ -73,7 +80,8 @@ export default class NewUserForm extends Component {
                         <label>Location:</label>
                         <Input fluid onChange={this.handleChange} type="text" name="location" value={this.state.newUser.location} placeholder='City, State' />
                     </Form.Field>
-                    <Button className='update' type='submit' value='Add Post'>Submit</Button>
+                    <Button color='red' floated='right' onClick={this.handleClose}>Cancel</Button>
+                    <Button  color='green' floated='right' className='update' type='submit' value='Add Post'>Submit</Button>
                 </StyledForm>
             </Modal.Content>
         </StyledModal>
