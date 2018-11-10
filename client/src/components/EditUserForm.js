@@ -40,6 +40,12 @@ export default class EditUserForm extends Component {
 
     handleOpen = () => this.setState({ modalOpen: true })
 
+    handleClose = () => {
+        this.setState({ modalOpen: false })
+        this.getUser()
+    }
+
+
 
     handleChange = (event) => {
         const updatedUser = { ...this.state.user }
@@ -76,7 +82,8 @@ export default class EditUserForm extends Component {
                         <label>Location:</label>
                         <Input fluid onChange={this.handleChange} type="text" name="location" value={this.state.user.location} />
                     </Form.Field>
-                    <Button  size='large' color='green' floated='right' type='submit' value='Update'>Update</Button>
+                    <Button color='red' floated='right' onClick={this.handleClose}>Cancel</Button>
+                    <Button color='green' floated='right' type='submit' value='Update'>Update</Button>
                 </StyledForm>
             </Modal.Content>
         </StyledModal>
