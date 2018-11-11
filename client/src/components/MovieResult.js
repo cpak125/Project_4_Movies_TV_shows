@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Button, Card, Image, CardContent, Grid } from 'semantic-ui-react'
+import { Button, Card, Image, Grid } from 'semantic-ui-react'
 import styled from 'styled-components'
 
 const StyledCard= styled(Card)`

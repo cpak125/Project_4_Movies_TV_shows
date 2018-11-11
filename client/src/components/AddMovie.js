@@ -11,7 +11,7 @@ const StyledAddButton = styled(Button)`
 `
 const StyledSearchButton = styled(Button)`
 &&&{
-    margin-top:2vw;
+    margin-top:1vw;
 }
 `
 
@@ -54,14 +54,12 @@ export default class AddMovie extends Component {
         this.resetSearch()
     }
 
-
     resetSearch = () => {
         this.setState({
             searchQuery: '',
             searchResults: [],
             searching: !this.state.searching
         })
-
     }
 
     handleKeyPress = (event) => {
@@ -71,7 +69,6 @@ export default class AddMovie extends Component {
     }
 
     render() {
-
         return (
             <div>
                 <Modal
@@ -97,8 +94,7 @@ export default class AddMovie extends Component {
 
                             {this.state.searching ?
                                 <StyledSearchButton size='small' primary floated='right' onClick={this.newSearchHandler} >New Search</StyledSearchButton> :
-                                <StyledSearchButton size='small' primary floated='right' onClick={this.searchButtonHandler}>Search</StyledSearchButton>
-                            }
+                                <StyledSearchButton size='small' primary floated='right' onClick={this.searchButtonHandler}>Search</StyledSearchButton> }
                         </Sticky>
                     </Modal.Content>
 

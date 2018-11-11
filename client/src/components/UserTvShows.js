@@ -79,10 +79,12 @@ export default class UserTvShows extends Component {
         const user = this.state.user
         const tvShowsList = this.state.tvShows.map((tvShow, i) => {
             return (
-                <Grid.Column>
-                    <Card key={i} as={Link} to={`/users/${user.id}/tv_shows/${tvShow.id}`} >
-                        <Card.Content> Name: {tvShow.name} </Card.Content>
-                        <Card.Content><img src={tvShow.poster_path} alt='show poster' /> </Card.Content>
+                <Grid.Column key={i} >
+                    <Card raised link as={Link} to={`/users/${user.id}/tv_shows/${tvShow.id}`} >
+                        <Card.Content>
+                            <Card.Header textAlign='center'> Name: {tvShow.name} </Card.Header>
+                        </Card.Content>
+                        <Image style={{ height: '25vw' }} fluid src={tvShow.poster_path} alt='show poster' /> 
                     </Card>
                 </Grid.Column>
             )

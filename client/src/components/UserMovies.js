@@ -5,7 +5,7 @@ import { Card, Image, Menu, Icon, Grid } from 'semantic-ui-react'
 import styled from 'styled-components'
 import AddMovie from './AddMovie';
 
-const StyledContainer = styled(Grid)`
+const StyledGrid = styled(Grid)`
     &&&{
         margin:3vw 3vw ;
     }
@@ -74,8 +74,8 @@ export default class UserMovies extends Component {
         const user = this.state.user
         const movieList = this.state.movies.map((movie, i) => {
             return (
-                <Grid.Column>
-                    <Card link key={i} as={Link} to={`/users/${user.id}/movies/${movie.id}`} >
+                <Grid.Column key={i}>
+                    <Card raised link as={Link} to={`/users/${user.id}/movies/${movie.id}`} >
                         <Card.Content >
                             <Card.Header textAlign='center'> {movie.title} </Card.Header>
                         </Card.Content>
@@ -105,9 +105,9 @@ export default class UserMovies extends Component {
                     <AddMovie addNewMovie={this.addNewMovie} />
                 </StyledHeader>
 
-                <StyledContainer columns={4} relaxed doubling>
+                <StyledGrid columns={4} relaxed doubling>
                         {movieList.reverse()}
-                </StyledContainer>
+                </StyledGrid>
             </div>
         )
     }

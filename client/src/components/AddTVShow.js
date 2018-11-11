@@ -11,7 +11,7 @@ const StyledAddButton = styled(Button)`
 `
 const StyledSearchButton = styled(Button)`
 &&&{
-    margin-top:2vw;
+    margin-top:1vw;
 }
 `
 
@@ -25,7 +25,12 @@ export default class AddTVShow extends Component {
 
     handleOpen = () => this.setState({ modalOpen: true })
 
-    handleClose = () => this.setState({ modalOpen: false })
+    handleClose = () => this.setState({
+        modalOpen: false,
+        searchQuery: '',
+        searchResults: [],
+        searching: !this.state.searching
+    })
 
     transferResult = (response) => {
         this.setState({ searchResults: response.data.results })
@@ -78,8 +83,8 @@ export default class AddTVShow extends Component {
                     onClose={this.handleClose} >
 
                     <Modal.Header>Search for a Movie</Modal.Header>
-                    <Modal.Content extra>
-                        <Sticky offset={2}>
+                    <Modal.Content>
+                        <Sticky>
                             <Input size='small' fluid focus type='text' placeholder="Search..." icon='search'
                                 value={this.state.searchQuery} onChange={this.inputChangeHandler}
                                 onChange={this.inputChangeHandler}

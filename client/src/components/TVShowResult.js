@@ -1,6 +1,17 @@
 import React, { Component } from 'react'
 import { Button } from 'semantic-ui-react'
+import styled from 'styled-components'
 
+const StyledCard= styled(Card)`
+&&&{
+  margin-bottom:4vw;
+}
+`
+const StyledHeader = styled(Card.Header)`
+&&&{
+  font-size:20px;
+}
+`
 
 export default class TVShowResult extends Component {
 
