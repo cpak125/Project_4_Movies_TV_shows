@@ -17,10 +17,7 @@ export default class MovieResults extends Component {
                     poster_path={poster_path}
                     overview={movie.overview}
                     addNewMovie={this.props.addNewMovie}
-                    // toggleAddMovie={this.props.toggleAddMovie}
-                    resetSearch={this.props.resetSearch}
                     handleClose={this.props.handleClose}
-                    // userId={this.props.userId}
                 />
             )
         })

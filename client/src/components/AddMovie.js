@@ -17,7 +17,7 @@ const StyledSearchButton = styled(Button)`
 
 export default class AddMovie extends Component {
     state = {
-        // searching: false,
+        searching: false,
         searchQuery: '',
         searchResults: [],
         modalOpen: false
@@ -29,7 +29,7 @@ export default class AddMovie extends Component {
         modalOpen: false,
         searchQuery: '',
         searchResults: [],
-        searching: false
+        searching: !this.state.searching
     })
 
 
@@ -56,17 +56,17 @@ export default class AddMovie extends Component {
     }
 
 
-    // resetSearch = () => {
-    //     this.setState({
-    //         searchQuery: '',
-    //         searchResults: [],
-    //         searching: !this.state.searching
-    //     })
+    resetSearch = () => {
+        this.setState({
+            searchQuery: '',
+            searchResults: [],
+            searching: !this.state.searching
+        })
 
-    // }
+    }
 
     handleKeyPress = (event) => {
-        if (event.key == 'Enter') {
+        if (event.key === 'Enter') {
             this.searchButtonHandler()
         }
     }
@@ -95,11 +95,10 @@ export default class AddMovie extends Component {
                                 onChange={this.inputChangeHandler}
                                 onKeyPress={this.handleKeyPress} />
 
-                            {/* {this.state.searching ? */}
-                                {/* <StyledSearchButton primary floated='right' onClick={this.newSearchHandler} >New Search</StyledSearchButton> : */}
+                            {this.state.searching ?
+                                <StyledSearchButton primary floated='right' onClick={this.newSearchHandler} >New Search</StyledSearchButton> : 
                                 <StyledSearchButton primary floated='right' onClick={this.searchButtonHandler}>Search</StyledSearchButton>
-
-                            {/* } */}
+                            }
                         </Sticky>
 
                         {this.state.searching ?

@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
-import { Card, Image, Menu, Icon } from 'semantic-ui-react'
+import { Card, Image, Menu, Icon, Grid } from 'semantic-ui-react'
 import styled from 'styled-components'
 import AddMovie from './AddMovie';
 
-const StyledContainer = styled(Card.Group)`
+const StyledContainer = styled(Grid)`
     &&&{
-        margin:3vw 10vw ;
+        margin:3vw 3vw ;
     }
 `
 
@@ -15,6 +15,7 @@ const StyledHeader = styled.div`
 text-align:center;
 margin-top: 5vw;
 `
+
 
 export default class UserMovies extends Component {
     state = {
@@ -74,12 +75,14 @@ export default class UserMovies extends Component {
         const user = this.state.user
         const movieList = this.state.movies.map((movie, i) => {
             return (
-                <Card link key={i} as={Link} to={`/users/${user.id}/movies/${movie.id}`} >
-                    <Card.Content >
-                        <Card.Header textAlign='center'> {movie.title} </Card.Header>
-                    </Card.Content>
-                    <Image fluid src={movie.poster_path} alt='movie poster' />
-                </Card>
+                <Grid.Column>
+                    <Card link key={i} as={Link} to={`/users/${user.id}/movies/${movie.id}`} >
+                        <Card.Content >
+                            <Card.Header textAlign='center'> {movie.title} </Card.Header>
+                        </Card.Content>
+                        <Image style={{ height: '25vw' }} fluid src={movie.poster_path} alt='movie poster' />
+                    </Card>
+                </Grid.Column>
             )
         })
         return (
@@ -103,8 +106,8 @@ export default class UserMovies extends Component {
                     <AddMovie addNewMovie={this.addNewMovie} />
                 </StyledHeader>
 
-                <StyledContainer doubling itemsPerRow={4}>
-                    {movieList.reverse()}
+                <StyledContainer columns={4} relaxed doubling>
+                        {movieList.reverse()}
                 </StyledContainer>
             </div>
 
