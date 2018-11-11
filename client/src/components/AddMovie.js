@@ -32,7 +32,6 @@ export default class AddMovie extends Component {
         searching: !this.state.searching
     })
 
-
     transferResult = (response) => {
         this.setState({ searchResults: response.data.results })
     }
@@ -76,16 +75,17 @@ export default class AddMovie extends Component {
         return (
             <div>
                 <Modal
-                    trigger={<StyledAddButton animated='fade' primary size='large' compact onClick={this.handleOpen} >
-                        <Button.Content visible>Add a Movie</Button.Content>
-                        <Button.Content hidden> Click to begin Search</Button.Content>
-                    </StyledAddButton>}
+                    trigger={
+                        <StyledAddButton animated='fade' primary size='large' compact onClick={this.handleOpen} >
+                            <Button.Content visible>Add a Movie</Button.Content>
+                            <Button.Content hidden> Click to begin Search</Button.Content>
+                        </StyledAddButton>}
                     size='large'
                     closeIcon
                     centered={false}
                     open={this.state.modalOpen}
-                    onClose={this.handleClose}
-                >
+                    onClose={this.handleClose}>
+
                     <Modal.Header>Search for a Movie</Modal.Header>
                     <Modal.Content extra >
                         <Sticky offset={2}>
@@ -100,22 +100,19 @@ export default class AddMovie extends Component {
                                 <StyledSearchButton size='small' primary floated='right' onClick={this.searchButtonHandler}>Search</StyledSearchButton>
                             }
                         </Sticky>
-                        </Modal.Content>
+                    </Modal.Content>
 
-                        <Modal.Content scrolling >
-                            {this.state.searching ?
-                                <MovieResults
-                                    searchResults={this.state.searchResults}
-                                    addNewMovie={this.props.addNewMovie}
-                                    resetSearch={this.resetSearch}
-                                    handleClose={this.handleClose}
-                                /> :
-                                null
-                            }
-                        </Modal.Content>
+                    <Modal.Content scrolling >
+                        {this.state.searching ?
+                            <MovieResults
+                                searchResults={this.state.searchResults}
+                                addNewMovie={this.props.addNewMovie}
+                                resetSearch={this.resetSearch}
+                                handleClose={this.handleClose}
+                            /> : null }
+                    </Modal.Content>
                 </Modal>
-
             </div>
-                )
-            }
-        }
+        )
+    }
+}

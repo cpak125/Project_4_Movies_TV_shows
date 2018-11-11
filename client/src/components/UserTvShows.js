@@ -1,9 +1,21 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
-import { Card } from 'semantic-ui-react'
+import { Card, Image, Menu, Icon, Grid } from 'semantic-ui-react'
 import AddTVShow from './AddTVShow';
+import styled from 'styled-components'
 
+
+const StyledContainer = styled(Grid)`
+    &&&{
+        margin:3vw 3vw ;
+    }
+`
+
+const StyledHeader = styled.div`
+text-align:center;
+margin-top: 5vw;
+`
 
 export default class UserTvShows extends Component {
     state = {
@@ -61,30 +73,45 @@ export default class UserTvShows extends Component {
                 poster_path: ''
             }
         })
-
     }
 
     render() {
         const user = this.state.user
         const tvShowsList = this.state.tvShows.map((tvShow, i) => {
             return (
-                <Link key={i} to={`/users/${user.id}/tv_shows/${tvShow.id}`}>
-                    <Card >
+                <Grid.Column>
+                    <Card key={i} as={Link} to={`/users/${user.id}/tv_shows/${tvShow.id}`} >
                         <Card.Content> Name: {tvShow.name} </Card.Content>
                         <Card.Content><img src={tvShow.poster_path} alt='show poster' /> </Card.Content>
                     </Card>
-                </Link>
+                </Grid.Column>
             )
         })
+
         return (
             <div>
-                <h1>{user.name}'s TV Shows</h1>
+                <Menu fluid widths={3} size='tiny' icon='labeled' inverted>
+                    <Menu.Item as={Link} to='/'>
+                        <Icon link name='home' /> Home
+                    </Menu.Item>
 
-                <AddTVShow addNewTVShow={this.addNewTVShow} />
-                
-                <div>
+                    <Menu.Item as={Link} to='/users'>
+                        <Icon link name='users' /> All Users
+                    </Menu.Item>
+
+                    <Menu.Item as={Link} to={`/users/${user.id}`}>
+                        <Icon link name='user' /> User
+                    </Menu.Item>
+                </Menu>
+
+                <StyledHeader>
+                    <h1>{user.name}'s TV Shows</h1>
+                    <AddTVShow addNewTVShow={this.addNewTVShow} />
+                </StyledHeader>
+
+                <StyledContainer columns={4} relaxed doubling>
                     {tvShowsList.reverse()}
-                </div>
+                </StyledContainer>
             </div>
         )
     }

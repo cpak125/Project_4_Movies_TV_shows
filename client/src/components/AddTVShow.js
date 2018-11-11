@@ -1,9 +1,19 @@
 import React, { Component } from 'react'
 import TVShowResults from './TVShowResults';
 import axios from 'axios'
-import { Modal, Button, Input } from 'semantic-ui-react'
+import styled from 'styled-components'
+import { Modal, Button, Input, Sticky } from 'semantic-ui-react'
 
-
+const StyledAddButton = styled(Button)`
+&&&{
+    width:30vw;
+}
+`
+const StyledSearchButton = styled(Button)`
+&&&{
+    margin-top:2vw;
+}
+`
 
 export default class AddTVShow extends Component {
     state = {
@@ -47,41 +57,52 @@ export default class AddTVShow extends Component {
         })
     }
 
+    handleKeyPress = (event) => {
+        if (event.key === 'Enter') {
+            this.searchButtonHandler()
+        }
+    }
 
     render() {
         return (
             <div>
-                <Modal trigger={<Button onClick={this.handleOpen} >Add a TV Show</Button>}
+                <Modal trigger={
+                    <StyledAddButton animated='fade' primary size='large' compact onClick={this.handleOpen} >
+                        <Button.Content visible>Add a TV Show</Button.Content>
+                        <Button.Content hidden> Click to begin Search</Button.Content>
+                    </StyledAddButton>}
+                    size='large'
                     closeIcon
+                    centered
                     open={this.state.modalOpen}
-                    onClose={this.handleClose}
-                >
-                    <Modal.Content>
-                        <h1>Add TV Show</h1>
+                    onClose={this.handleClose} >
 
-                        <Input focus placeholder="Search..." value={this.state.searchQuery} onChange={this.inputChangeHandler} />
+                    <Modal.Header>Search for a Movie</Modal.Header>
+                    <Modal.Content extra>
+                        <Sticky offset={2}>
+                            <Input size='small' fluid focus type='text' placeholder="Search..." icon='search'
+                                value={this.state.searchQuery} onChange={this.inputChangeHandler}
+                                onChange={this.inputChangeHandler}
+                                onKeyPress={this.handleKeyPress} />
 
-                        {this.state.searching ?
-                            <button onClick={this.newSearchHandler}>New Search</button> :
-                            <button onClick={this.searchButtonHandler}>Search</button>
-                        }
+                            {this.state.searching ?
+                                <StyledSearchButton size='small' primary floated='right' onClick={this.newSearchHandler} >New Search</StyledSearchButton> :
+                                <StyledSearchButton size='small' primary floated='right' onClick={this.searchButtonHandler}>Search</StyledSearchButton>
+                            }
+                        </Sticky>
+                    </Modal.Content>
 
+                    <Modal.Content scrolling>
                         {this.state.searching ?
                             <TVShowResults
                                 searchResults={this.state.searchResults}
                                 addNewTVShow={this.props.addNewTVShow}
-                                // toggleAddTVShow={this.props.toggleAddTVShow}
                                 resetSearch={this.resetSearch}
-                                // userId={this.props.userId}
                                 handleClose={this.handleClose}
-
-                            /> :
-                            null
-                        }
+                            /> : null}
                     </Modal.Content>
                 </Modal>
-
-            </div>
+            </div >
         )
     }
 }
