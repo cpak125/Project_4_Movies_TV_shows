@@ -7,12 +7,12 @@ import { Icon, Menu } from 'semantic-ui-react';
 
 const Body = styled.div`
  text-align:center;
- padding-top:20px;
+ margin-top:20px;
  `
 
 const StyledUser = styled.div`
- padding-top:10px;
- padding-bottom:10px;
+ margin-top:10px;
+ margin-bottom:10px;
  font-size:20px;
  `
 
@@ -47,7 +47,7 @@ export default class AllUsers extends Component {
 
         return (
             <div>
-                <Menu size='small' icon='labeled' inverted>
+                <Menu size='tiny' icon='labeled' inverted>
                     <Menu.Item as={Link} to='/'>
                         <Icon link name='home' /> Home
                     </Menu.Item>

@@ -1,22 +1,20 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import { Card, Image } from 'semantic-ui-react'
+import { Link } from 'react-router-dom'
+import { Card, Image, Menu, Icon } from 'semantic-ui-react'
 import styled from 'styled-components'
 import AddMovie from './AddMovie';
 
 const StyledContainer = styled(Card.Group)`
     &&&{
-        margin:5vw 10vw ;
-        /* display:flex;
-        justify-content:space-around; */
+        margin:3vw 10vw ;
     }
 `
 
-// const StyledCard = styled(Card)`
-//     &&&{
-//         max-width:75vw;
-//     }
-// `
+const StyledHeader = styled.div`
+text-align:center;
+margin-top: 5vw;
+`
 
 export default class UserMovies extends Component {
     state = {
@@ -45,7 +43,6 @@ export default class UserMovies extends Component {
         await this.fetchData()
     }
 
-
     addNewMovie = async (title, movie_id, release_date, overview, poster_path) => {
         const newMovie = { ...this.state.newMovie }
         newMovie.title = title
@@ -70,7 +67,6 @@ export default class UserMovies extends Component {
                 poster_path: '',
             }
         })
-
     }
 
     render() {
@@ -78,23 +74,36 @@ export default class UserMovies extends Component {
         const user = this.state.user
         const movieList = this.state.movies.map((movie, i) => {
             return (
-
-                <Card fluid key={i} href={`/users/${user.id}/movies/${movie.id}`} >
+                <Card key={i} href={`/users/${user.id}/movies/${movie.id}`} >
                     <Card.Content >
                         <Card.Header textAlign='center'> {movie.title} </Card.Header>
                     </Card.Content>
                     <Image fluid src={movie.poster_path} alt='movie poster' />
                 </Card>
-
             )
         })
         return (
             <div>
-                <h1>{user.name}'s Movies</h1>
+                <Menu fluid widths={3} size='tiny' icon='labeled' inverted>
+                    <Menu.Item as={Link} to='/'>
+                        <Icon link name='home' /> Home
+                    </Menu.Item>
 
-                <AddMovie addNewMovie={this.addNewMovie} />
+                    <Menu.Item as={Link} to='/users'>
+                        <Icon link name='users' /> All Users
+                    </Menu.Item>
 
-                <StyledContainer stackable itemsPerRow={4}>
+                    <Menu.Item as={Link} to={`/users/${user.id}`}>
+                        <Icon link name='user' /> User
+                    </Menu.Item>
+                </Menu>
+
+                <StyledHeader>
+                    <h1>{user.name}'s Movies</h1>
+                    <AddMovie addNewMovie={this.addNewMovie} />
+                </StyledHeader>
+
+                <StyledContainer doubling itemsPerRow={4}>
                     {movieList.reverse()}
                 </StyledContainer>
             </div>

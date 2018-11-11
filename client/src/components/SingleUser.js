@@ -6,7 +6,7 @@ import { Card, Button, Icon, Menu, Confirm } from 'semantic-ui-react'
 import EditUserForm from './EditUserForm';
 
 const ProfileSection = styled.div`
-    padding-top: 20px;
+    margin-top: 20px;
     margin: auto;
     display:flex;
     flex-direction: column;
@@ -14,14 +14,16 @@ const ProfileSection = styled.div`
     Button{
         font-size: 40px;
     }
-
+`
+const Page = styled.div`
+margin: 0 auto;
 `
 
 const Footer = styled.div`
     display:flex;
     flex-direction:row;
     justify-content:space-evenly;
-    padding-top:40px;
+    margin-top:40px;
     Button{
         width:30vw;
     }
@@ -41,7 +43,7 @@ const StyledCardContent = styled(Card.Content)`
     justify-content: space-around;
     align-items:left;
     font-size: 18px;
-    padding-bottom: 5px;
+    margin-bottom: 5px;
 }
 `
 
@@ -70,18 +72,18 @@ export default class SingleUser extends Component {
         this.handleConfirm()
     }
 
-  showConfirm = () => this.setState({ confirmOpen: true })
+    showConfirm = () => this.setState({ confirmOpen: true })
 
-  handleConfirm = () => this.setState({ confirmOpen: false })
+    handleConfirm = () => this.setState({ confirmOpen: false })
 
-  handleCancel = () => this.setState({ confirmOpen: false })
+    handleCancel = () => this.setState({ confirmOpen: false })
 
 
     render() {
         const user = this.state.user
         return (
-            <div>
-                <Menu size='small' icon='labeled' inverted>
+            <Page>
+                <Menu fluid widths={2} size='tiny' icon='labeled' inverted>
                     <Menu.Item as={Link} to='/'>
                         <Icon link name='home' /> Home
                     </Menu.Item>
@@ -118,20 +120,18 @@ export default class SingleUser extends Component {
                                     open={this.state.confirmOpen}
                                     content={`Are you sure you want to delete ${user.name}'s profile? `}
                                     cancelButton='No'
-                                    confirmButton="Yes"  
-                                    size='tiny'                        
+                                    confirmButton="Yes"
+                                    size='tiny'
                                     onCancel={this.handleCancel}
-                                    onConfirm={() => this.deleteUser()}  />
-
+                                    onConfirm={() => this.deleteUser()} />
                             </Card.Content>
-
                         </StyledCardContent>
                     </StyledCard>
                 </ProfileSection>
 
                 <Footer>
                     <Link to={`/users/${user.id}/movies`}>
-                        <Button size='big' color='green' animated='fade'>
+                        <Button compact size='big' color='green' animated='fade'>
                             <Button.Content visible>
                                 <Icon name='film' size='big' />
                             </Button.Content>
@@ -142,19 +142,18 @@ export default class SingleUser extends Component {
                     </Link>
 
                     <Link to={`/users/${user.id}/tv_shows`}>
-                        <Button size='big' color='green' animated='fade'>
+                        <Button compact size='big' color='green' animated='fade'>
                             <Button.Content visible>
                                 <Icon name='tv' size='big' />
                             </Button.Content>
                             <Button.Content hidden>
                                 See Favorite TV Shows
-                        </Button.Content>
-
+                            </Button.Content>
                         </Button>
                     </Link>
                 </Footer>
 
-            </div>
+            </Page>
 
         )
     }
