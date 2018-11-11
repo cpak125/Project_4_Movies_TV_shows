@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import MovieResults from './MovieResults';
 import axios from 'axios'
-import { Modal, Button, Input, Search, Sticky } from 'semantic-ui-react'
+import { Modal, Button, Input, Sticky } from 'semantic-ui-react'
 import styled from 'styled-components'
 
 const StyledAddButton = styled(Button)`
