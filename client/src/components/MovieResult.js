@@ -20,7 +20,6 @@ export default class MovieResult extends Component {
     this.props.handleClose()
   }
 
-
   render() {
     return (
       <StyledCard fluid raised>
@@ -40,10 +39,9 @@ export default class MovieResult extends Component {
           <Button color='green' floated='right'
                   onClick={() => this.addNewMovie(
                     this.props.title, this.props.movie_id, this.props.release_date,
-                    this.props.overview, this.props.poster_path)}>Add to List
+                    this.props.overview, this.props.poster_path)}
+                    >Add to List
              </Button>
-
-
         </Card.Content>
       </StyledCard>
     )
