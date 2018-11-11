@@ -78,7 +78,7 @@ export default class UserMovies extends Component {
                         <Card.Content >
                             <Card.Header textAlign='center'> {movie.title} </Card.Header>
                         </Card.Content>
-                        <Image fluid src={movie.poster_path} alt='movie poster' />
+                        <img  src={movie.poster_path} alt='movie poster' />
                     </Card>
             )
         })

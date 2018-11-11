@@ -39,7 +39,6 @@ export default class SingleMovie extends Component {
         const movie = this.state.movie
         const movieDetails = this.state.movieDetails
         const genres = movieDetails.genres
-        console.log(genres)
 
         let genreNames = genres.map(genre => genre.name)
 
