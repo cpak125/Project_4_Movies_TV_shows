@@ -7,7 +7,6 @@ export default class MovieResult extends Component {
   addNewMovie = (movieId, title, releaseDate, overview, posterPath) => {
     this.props.addNewMovie(movieId, title, releaseDate, overview, posterPath)
     this.props.handleClose()
-    this.props.resetSearch()
   }
 
 

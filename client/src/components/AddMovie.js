@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import MovieResults from './MovieResults';
 import axios from 'axios'
-import { Modal, Button, Input, Search } from 'semantic-ui-react'
+import { Modal, Button, Input, Search, Sticky } from 'semantic-ui-react'
 import styled from 'styled-components'
 
 const StyledAddButton = styled(Button)`
@@ -17,7 +17,7 @@ const StyledSearchButton = styled(Button)`
 
 export default class AddMovie extends Component {
     state = {
-        searching: false,
+        // searching: false,
         searchQuery: '',
         searchResults: [],
         modalOpen: false
@@ -28,8 +28,8 @@ export default class AddMovie extends Component {
     handleClose = () => this.setState({
         modalOpen: false,
         searchQuery: '',
-        searchResults:[],
-        searching:false
+        searchResults: [],
+        searching: false
     })
 
 
@@ -56,14 +56,14 @@ export default class AddMovie extends Component {
     }
 
 
-    resetSearch = () => {
-        this.setState({
-            searchQuery: '',
-            searchResults: [],
-            searching: !this.state.searching
-        })
+    // resetSearch = () => {
+    //     this.setState({
+    //         searchQuery: '',
+    //         searchResults: [],
+    //         searching: !this.state.searching
+    //     })
 
-    }
+    // }
 
     handleKeyPress = (event) => {
         if (event.key == 'Enter') {
@@ -88,17 +88,19 @@ export default class AddMovie extends Component {
                 >
                     <Modal.Header>Search for a Movie</Modal.Header>
                     <Modal.Content scrolling >
-                        <Input fluid focus type='text' icon='search' tabIndex
-                            placeholder="Search..."
-                            value={this.state.searchQuery}
-                            onChange={this.inputChangeHandler}
-                            onKeyPress={this.handleKeyPress} />
+                        <Sticky>
+                            <Input fluid focus type='text' icon='search' 
+                                placeholder="Search..."
+                                value={this.state.searchQuery}
+                                onChange={this.inputChangeHandler}
+                                onKeyPress={this.handleKeyPress} />
 
-                        {this.state.searching ?
-                            <StyledSearchButton primary floated='right' onClick={this.newSearchHandler} >New Search</StyledSearchButton> :
-                            <StyledSearchButton primary floated='right' onClick={this.searchButtonHandler}>Search</StyledSearchButton>
+                            {/* {this.state.searching ? */}
+                                {/* <StyledSearchButton primary floated='right' onClick={this.newSearchHandler} >New Search</StyledSearchButton> : */}
+                                <StyledSearchButton primary floated='right' onClick={this.searchButtonHandler}>Search</StyledSearchButton>
 
-                        }
+                            {/* } */}
+                        </Sticky>
 
                         {this.state.searching ?
                             <MovieResults
