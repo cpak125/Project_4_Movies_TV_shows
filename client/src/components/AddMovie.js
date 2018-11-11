@@ -88,7 +88,7 @@ export default class AddMovie extends Component {
                 >
                     <Modal.Header>Search for a Movie</Modal.Header>
                     <Modal.Content scrolling >
-                        <Sticky>
+                        <Sticky offset={2}>
                             <Input fluid focus type='text' icon='search' 
                                 placeholder="Search..."
                                 value={this.state.searchQuery}
