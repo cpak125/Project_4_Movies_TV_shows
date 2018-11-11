@@ -5,34 +5,16 @@ import styled from 'styled-components'
 import NewUserForm from './NewUserForm';
 import { Icon, Menu } from 'semantic-ui-react';
 
-const Page = styled.div`
- display: flex;
- flex-direction: column;
- align-items: center;
- padding-top:40px;
- `
-
-const UserListContainer = styled.div`
- font-size: 20px;
- display:flex;
- flex-direction: column;
- align-content: space-between;
- justify-content:space-between;
- align-items: center;
- padding-top:30px;
+const Body = styled.div`
+ text-align:center;
+ padding-top:20px;
  `
 
 const StyledUser = styled.div`
  padding-top:10px;
  padding-bottom:10px;
+ font-size:20px;
  `
-
-const StyledIcon = styled(Icon)`
-&&& {
-    padding-left: 10px; 
-    padding-top: 10px;  
-}
-`
 
 export default class AllUsers extends Component {
 
@@ -65,22 +47,21 @@ export default class AllUsers extends Component {
 
         return (
             <div>
-                <Menu icon='labeled' inverted>
+                <Menu size='small' icon='labeled' inverted>
                     <Menu.Item as={Link} to='/'>
-                        <Icon size='large' link name='home' /> Home
+                        <Icon link name='home' /> Home
                     </Menu.Item>
                 </Menu>
-                <Page>
+
+                <Body>
                     <h1>Users <NewUserForm
                         addNewUser={this.addNewUser}
                     />
                     </h1>
-                </Page>
 
-
-                <UserListContainer>
                     {userList}
-                </UserListContainer>
+                </Body>
+
             </div>
 
 

@@ -1,9 +1,22 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
 import axios from 'axios'
-import { Card, Image, CardContent } from 'semantic-ui-react'
+import { Card, Image } from 'semantic-ui-react'
+import styled from 'styled-components'
 import AddMovie from './AddMovie';
 
+const StyledContainer = styled(Card.Group)`
+    &&&{
+        margin:5vw 10vw ;
+        /* display:flex;
+        justify-content:space-around; */
+    }
+`
+
+// const StyledCard = styled(Card)`
+//     &&&{
+//         max-width:75vw;
+//     }
+// `
 
 export default class UserMovies extends Component {
     state = {
@@ -65,14 +78,14 @@ export default class UserMovies extends Component {
         const user = this.state.user
         const movieList = this.state.movies.map((movie, i) => {
             return (
-               
-                    <Card key={i} href={`/users/${user.id}/movies/${movie.id}`} >
-                        <Card.Content >
-                            <Card.Header textAlign='center'> {movie.title} </Card.Header>
-                            <Image fluid src={movie.poster_path} alt='movie poster' />
-                        </Card.Content>
-                    </Card>
-              
+
+                <Card fluid key={i} href={`/users/${user.id}/movies/${movie.id}`} >
+                    <Card.Content >
+                        <Card.Header textAlign='center'> {movie.title} </Card.Header>
+                    </Card.Content>
+                    <Image fluid src={movie.poster_path} alt='movie poster' />
+                </Card>
+
             )
         })
         return (
@@ -81,10 +94,11 @@ export default class UserMovies extends Component {
 
                 <AddMovie addNewMovie={this.addNewMovie} />
 
-                <div>
+                <StyledContainer stackable itemsPerRow={4}>
                     {movieList.reverse()}
-                </div>
+                </StyledContainer>
             </div>
+
         )
     }
 }
