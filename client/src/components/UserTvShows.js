@@ -84,7 +84,7 @@ export default class UserTvShows extends Component {
                         <Card.Content>
                             <Card.Header textAlign='center'> Name: {tvShow.name} </Card.Header>
                         </Card.Content>
-                        <Image style={{ height: '25vw' }} fluid src={tvShow.poster_path} alt='show poster' /> 
+                        <Image style={{ height: '25vw' }} fluid src={tvShow.poster_path} alt='show poster' />
                     </Card>
                 </Grid.Column>
             )
@@ -92,7 +92,7 @@ export default class UserTvShows extends Component {
 
         return (
             <div>
-                <Menu fluid widths={3} size='tiny' icon='labeled' inverted>
+                <Menu fluid widths={4} size='tiny' icon='labeled' inverted>
                     <Menu.Item as={Link} to='/'>
                         <Icon link name='home' /> Home
                     </Menu.Item>
@@ -102,7 +102,11 @@ export default class UserTvShows extends Component {
                     </Menu.Item>
 
                     <Menu.Item as={Link} to={`/users/${user.id}`}>
-                        <Icon link name='user' /> User
+                        <Icon link name='user' /> {user.name}'s Profile
+                    </Menu.Item>
+
+                    <Menu.Item as={Link} to={`/users/${user.id}/movies`}>
+                        <Icon link name='film' /> {user.name}'s Movies
                     </Menu.Item>
                 </Menu>
 

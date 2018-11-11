@@ -86,7 +86,7 @@ export default class UserMovies extends Component {
         })
         return (
             <div>
-                <Menu fluid widths={3} size='tiny' icon='labeled' inverted>
+                <Menu fluid widths={4} size='tiny' icon='labeled' inverted>
                     <Menu.Item as={Link} to='/'>
                         <Icon link name='home' /> Home
                     </Menu.Item>
@@ -96,7 +96,11 @@ export default class UserMovies extends Component {
                     </Menu.Item>
 
                     <Menu.Item as={Link} to={`/users/${user.id}`}>
-                        <Icon link name='user' /> User
+                        <Icon link name='user' /> {user.name}'s Profile
+                    </Menu.Item>
+
+                    <Menu.Item as={Link} to={`/users/${user.id}/tv_shows`}>
+                        <Icon link name='tv' /> {user.name}'s TV Shows
                     </Menu.Item>
                 </Menu>
 
@@ -106,7 +110,7 @@ export default class UserMovies extends Component {
                 </StyledHeader>
 
                 <StyledGrid columns={4} relaxed doubling>
-                        {movieList.reverse()}
+                    {movieList.reverse()}
                 </StyledGrid>
             </div>
         )

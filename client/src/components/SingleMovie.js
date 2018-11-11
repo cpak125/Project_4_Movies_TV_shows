@@ -23,6 +23,7 @@ const StyledContent = styled(Card.Content)`
 
 export default class SingleMovie extends Component {
     state = {
+        user: {},
         movie: {},
         movieDetails: {
             genres: []
@@ -31,15 +32,22 @@ export default class SingleMovie extends Component {
     }
 
     async componentDidMount() {
+        const userResponse = await this.fetchUser()
         const movieResponse = await this.fetchMovieData()
         const movieDetailsResponse = await this.fetchMovieDetails(movieResponse.data.movie_id)
 
         this.setState({
+            user: userResponse.data,
             movie: movieResponse.data,
             movieDetails: movieDetailsResponse.data
         })
     }
 
+    fetchUser = async () => {
+        const userId = this.props.match.params.user_id
+        return await axios.get(`/api/users/${userId}`)
+    }
+    
     fetchMovieData = async () => {
         const userId = this.props.match.params.user_id
         const movieId = this.props.match.params.id
@@ -65,15 +73,16 @@ export default class SingleMovie extends Component {
 
 
     render() {
+        const user=this.state.user
         const movie = this.state.movie
         const movieDetails = this.state.movieDetails
         const genres = movieDetails.genres
-        let genreNames = genres.map(genre => genre.name)
+        const genreNames = genres.map(genre => genre.name)
         const userId = this.props.match.params.user_id
 
         return (
             <div>
-                <Menu fluid widths={4} size='tiny' icon='labeled' inverted>
+                <Menu fluid widths={5} size='tiny' icon='labeled' inverted>
                     <Menu.Item as={Link} to='/'>
                         <Icon link name='home' /> Home
                     </Menu.Item>
@@ -83,13 +92,15 @@ export default class SingleMovie extends Component {
                     </Menu.Item>
 
                     <Menu.Item as={Link} to={`/users/${userId}`}>
-                        <Icon link name='user' /> User
+                        <Icon link name='user' /> User's Profile
                      </Menu.Item>
 
                     <Menu.Item as={Link} to={`/users/${userId}/movies`}>
-                        <Icon link name='film' /> Movies
+                        <Icon link name='film' />{user.name}'s' Movies
                      </Menu.Item>
-
+                    <Menu.Item as={Link} to={`/users/${userId}/tv_shows`}>
+                        <Icon link name='tv' />{user.name}'s TV Shows
+                     </Menu.Item>
                 </Menu>
 
                 <StyledCard centered>
