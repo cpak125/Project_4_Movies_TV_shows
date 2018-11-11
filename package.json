@@ -1,7 +1,7 @@
 {
     "name": "movies_tv_shows",
     "engines": {
-        "node": "9.9.0"
+        "node": "10.9.0"
     },
     "scripts": {
         "build": "cd client && npm install && npm run build && cd ..",
