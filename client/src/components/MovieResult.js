@@ -28,12 +28,12 @@ export default class MovieResult extends Component {
           <Grid stackable>
             <Grid.Row >
               <Grid.Column mobile={4} stretched>
-                <Image src={this.props.poster_path} alt='movie poster' />
+                <Image fluid size='small' src={this.props.poster_path} alt='movie poster' />
               </Grid.Column>
-              <Grid.Column width={12}>
+              <Grid.Column stretched mobile={12}>
                 <StyledHeader>{this.props.title}</StyledHeader>
-                <Card.Description>{this.props.release_date}</Card.Description>
-                <Card.Description>{this.props.overview}</Card.Description>
+                <Card.Description> <b>Release date:</b> {this.props.release_date}</Card.Description>
+                <Card.Description><b>Overview:</b> {this.props.overview}</Card.Description>
               </Grid.Column>
             </Grid.Row>
           </Grid>

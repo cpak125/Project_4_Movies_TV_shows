@@ -16,7 +16,6 @@ text-align:center;
 margin-top: 5vw;
 `
 
-
 export default class UserMovies extends Component {
     state = {
         user: {},
@@ -110,7 +109,6 @@ export default class UserMovies extends Component {
                         {movieList.reverse()}
                 </StyledContainer>
             </div>
-
         )
     }
 }

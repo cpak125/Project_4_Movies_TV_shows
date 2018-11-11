@@ -15,10 +15,6 @@ const ProfileSection = styled.div`
         font-size: 40px;
     }
 `
-const Page = styled.div`
-margin: 0 auto;
-`
-
 const Footer = styled.div`
     display:flex;
     flex-direction:row;
@@ -31,7 +27,7 @@ const Footer = styled.div`
 
 const StyledCard = styled(Card)`
     &&&{
-        width: 30vw;
+        width: 32vw;
         height: 300px;
         background-color:lightgray;
     }
@@ -78,11 +74,10 @@ export default class SingleUser extends Component {
 
     handleCancel = () => this.setState({ confirmOpen: false })
 
-
     render() {
         const user = this.state.user
         return (
-            <Page>
+            <div>
                 <Menu fluid widths={2} size='tiny' icon='labeled' inverted>
                     <Menu.Item as={Link} to='/'>
                         <Icon link name='home' /> Home
@@ -152,9 +147,7 @@ export default class SingleUser extends Component {
                         </Button>
                     </Link>
                 </Footer>
-
-            </Page>
-
+            </div>
         )
     }
 }

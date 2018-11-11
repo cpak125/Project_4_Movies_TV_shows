@@ -87,33 +87,35 @@ export default class AddMovie extends Component {
                     onClose={this.handleClose}
                 >
                     <Modal.Header>Search for a Movie</Modal.Header>
-                    <Modal.Content scrolling >
+                    <Modal.Content extra >
                         <Sticky offset={2}>
-                            <Input fluid focus type='text' icon='search' 
+                            <Input size='small' fluid focus type='text' icon='search'
                                 placeholder="Search..."
                                 value={this.state.searchQuery}
                                 onChange={this.inputChangeHandler}
                                 onKeyPress={this.handleKeyPress} />
 
                             {this.state.searching ?
-                                <StyledSearchButton primary floated='right' onClick={this.newSearchHandler} >New Search</StyledSearchButton> : 
-                                <StyledSearchButton primary floated='right' onClick={this.searchButtonHandler}>Search</StyledSearchButton>
+                                <StyledSearchButton size='small' primary floated='right' onClick={this.newSearchHandler} >New Search</StyledSearchButton> :
+                                <StyledSearchButton size='small' primary floated='right' onClick={this.searchButtonHandler}>Search</StyledSearchButton>
                             }
                         </Sticky>
+                        </Modal.Content>
 
-                        {this.state.searching ?
-                            <MovieResults
-                                searchResults={this.state.searchResults}
-                                addNewMovie={this.props.addNewMovie}
-                                resetSearch={this.resetSearch}
-                                handleClose={this.handleClose}
-                            /> :
-                            null
-                        }
-                    </Modal.Content>
+                        <Modal.Content scrolling >
+                            {this.state.searching ?
+                                <MovieResults
+                                    searchResults={this.state.searchResults}
+                                    addNewMovie={this.props.addNewMovie}
+                                    resetSearch={this.resetSearch}
+                                    handleClose={this.handleClose}
+                                /> :
+                                null
+                            }
+                        </Modal.Content>
                 </Modal>
 
             </div>
-        )
-    }
-}
+                )
+            }
+        }
