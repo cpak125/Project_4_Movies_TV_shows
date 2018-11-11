@@ -5,10 +5,10 @@ import { Card, Image, Menu, Icon } from 'semantic-ui-react'
 import styled from 'styled-components'
 import AddMovie from './AddMovie';
 
-const StyledContainer = styled(Card.Group)`
-    &&&{
+const StyledContainer = styled.div`
+    
         margin:3vw 10vw ;
-    }
+        display:flex;
 `
 
 const StyledHeader = styled.div`
