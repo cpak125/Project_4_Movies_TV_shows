@@ -74,12 +74,14 @@ export default class UserMovies extends Component {
         const user = this.state.user
         const movieList = this.state.movies.map((movie, i) => {
             return (
-                    <Card key={i} as={Link} to={`/users/${user.id}/movies/${movie.id}`} >
+                <Link key={i} to={`/users/${user.id}/movies/${movie.id}`}>
+                    <Card>
                         <Card.Content >
                             <Card.Header textAlign='center'> {movie.title} </Card.Header>
                         </Card.Content>
-                        <img  src={movie.poster_path} alt='movie poster' />
+                        <img src={movie.poster_path} alt='movie poster' />
                     </Card>
+                </Link>
             )
         })
         return (
