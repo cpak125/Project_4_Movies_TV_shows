@@ -5,10 +5,10 @@ import { Card, Image, Menu, Icon } from 'semantic-ui-react'
 import styled from 'styled-components'
 import AddMovie from './AddMovie';
 
-const StyledContainer = styled.div`
-    
+const StyledContainer = styled(Card.Group)`
+    &&&{
         margin:3vw 10vw ;
-        display:flex;
+    }
 `
 
 const StyledHeader = styled.div`
@@ -74,14 +74,12 @@ export default class UserMovies extends Component {
         const user = this.state.user
         const movieList = this.state.movies.map((movie, i) => {
             return (
-                <Link key={i} to={`/users/${user.id}/movies/${movie.id}`}>
-                    <Card>
-                        <Card.Content >
-                            <Card.Header textAlign='center'> {movie.title} </Card.Header>
-                        </Card.Content>
-                        <img src={movie.poster_path} alt='movie poster' />
-                    </Card>
-                </Link>
+                <Card key={i} href={`/users/${user.id}/movies/${movie.id}`} >
+                    <Card.Content >
+                        <Card.Header textAlign='center'> {movie.title} </Card.Header>
+                    </Card.Content>
+                    <Image fluid src={movie.poster_path} alt='movie poster' />
+                </Card>
             )
         })
         return (
