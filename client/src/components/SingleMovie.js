@@ -47,7 +47,7 @@ export default class SingleMovie extends Component {
         const userId = this.props.match.params.user_id
         return await axios.get(`/api/users/${userId}`)
     }
-    
+
     fetchMovieData = async () => {
         const userId = this.props.match.params.user_id
         const movieId = this.props.match.params.id
@@ -62,7 +62,6 @@ export default class SingleMovie extends Component {
         const userId = this.props.match.params.user_id
         await axios.delete(`/api/users/${userId}/movies/${movieId}`)
         this.props.history.push(`/users/${userId}/movies`)
-
     }
 
     showConfirm = () => this.setState({ confirmOpen: true })
@@ -70,7 +69,6 @@ export default class SingleMovie extends Component {
     handleConfirm = () => this.setState({ confirmOpen: false })
 
     handleCancel = () => this.setState({ confirmOpen: false })
-
 
     render() {
         const user=this.state.user
@@ -108,7 +106,7 @@ export default class SingleMovie extends Component {
                         <Card.Header textAlign='center'>{movie.title}</Card.Header>
                     </Card.Content>
                     <Card.Content textAlign='center'>
-                        <Image centered src={movie.poster_path} alt='movie poster' />
+                        <Image rounded src={movie.poster_path} alt='movie poster' />
                     </Card.Content>
                     <StyledContent>
                         <Card.Description><b>Genre(s):</b>{genreNames.toString()}</Card.Description>
@@ -125,7 +123,6 @@ export default class SingleMovie extends Component {
                         size='tiny'
                         onCancel={this.handleCancel}
                         onConfirm={() => this.deleteMovie(movie.id)} />
-
                 </StyledCard>
             </div>
         )

@@ -84,7 +84,7 @@ export default class AddMovie extends Component {
                     onClose={this.handleClose}>
 
                     <Modal.Header>Search for a Movie</Modal.Header>
-                    <Modal.Content extra >
+                    <Modal.Content >
                         <Sticky offset={2}>
                             <Input size='small' fluid focus type='text' icon='search'
                                 placeholder="Search..."

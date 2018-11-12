@@ -27,7 +27,7 @@ export default class MovieResult extends Component {
           <Grid stackable>
             <Grid.Row >
               <Grid.Column mobile={4} stretched>
-                <Image fluid size='small' src={this.props.poster_path} alt='movie poster' />
+                <Image  rounded size='medium' src={this.props.poster_path} alt='movie poster' />
               </Grid.Column>
               <Grid.Column stretched mobile={12}>
                 <StyledHeader>{this.props.title}</StyledHeader>

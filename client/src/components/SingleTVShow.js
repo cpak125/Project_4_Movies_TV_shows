@@ -23,7 +23,7 @@ const StyledContent = styled(Card.Content)`
 
 export default class SingleTVShow extends Component {
     state = {
-        user:{},
+        user: {},
         tvShow: {},
         tvShowDetails: {
             genres: [],
@@ -72,7 +72,7 @@ export default class SingleTVShow extends Component {
     handleCancel = () => this.setState({ confirmOpen: false })
 
     render() {
-        const user=this.state.user
+        const user = this.state.user
         const tvShow = this.state.tvShow
         const tvShowDetails = this.state.tvShowDetails
         const genres = tvShowDetails.genres
@@ -99,23 +99,38 @@ export default class SingleTVShow extends Component {
                     <Menu.Item as={Link} to={`/users/${userId}/tv_shows`}>
                         <Icon link name='tv' /> {user.name}'s TV Shows
                      </Menu.Item>
-                     <Menu.Item as={Link} to={`/users/${userId}/movies`}>
+                    <Menu.Item as={Link} to={`/users/${userId}/movies`}>
                         <Icon link name='film' />{user.name}'s Movies
                      </Menu.Item>
                 </Menu>
 
-                <div><img src={tvShow.poster_path} alt='show poster' /></div>
-                <p><b>Name:</b> {tvShow.name}</p>
-                <p><b>Genre(s):</b> {genreNames.toString()}</p>
-                <p><b>Overview:</b> {tvShow.overview}</p>
-                <p><b>Network(s):</b> {networkNames.toString()}</p>
-                <p><b>First Air Date:</b> {tvShow.first_air_date} </p>
-                <p><b>Total Seasons:</b> {tvShowDetails.number_of_seasons}</p>
-                <p><b>Total Episodes:</b> {tvShowDetails.number_of_episodes}</p>
-                <p><b>Status:</b> {tvShowDetails.status}</p>
+                <StyledCard centered>
+                    <Card.Content>
+                        <Card.Header textAlign='center'> {tvShow.name}</Card.Header>
+                    </Card.Content>
+                    <Card.Content textAlign='center'>
+                        <Image rounded src={tvShow.poster_path} alt='show poster' />
+                    </Card.Content>
+                    <StyledContent>
+                        <Card.Description><b>Genre(s):</b> {genreNames.toString()}</Card.Description>
+                        <Card.Description><b>Overview:</b> {tvShow.overview}</Card.Description>
+                        <Card.Description><b>Network(s):</b> {networkNames.toString()}</Card.Description>
+                        <Card.Description><b>First Air Date:</b> {tvShow.first_air_date} </Card.Description>
+                        <Card.Description><b>Total Seasons:</b> {tvShowDetails.number_of_seasons}</Card.Description>
+                        <Card.Description><b>Total Episodes:</b> {tvShowDetails.number_of_episodes}</Card.Description>
+                        <Card.Description><b>Status:</b> {tvShowDetails.status}</Card.Description>
+                    </StyledContent>
 
-
-                <button onClick={() => this.deleteTvShow(tvShow.id)}>Delete TV Show</button>
+                    <Button fluid color='red' onClick={() => this.showConfirm}>Delete TV Show</Button>
+                    <Confirm
+                        open={this.state.confirmOpen}
+                        content={`Are you sure you want to delete '${tvShow.name}' ? `}
+                        cancelButton='No'
+                        confirmButton="Yes"
+                        size='tiny'
+                        onCancel={this.handleCancel}
+                        onConfirm={() => this.deleteTvShow(tvShow.id)} />
+                </StyledCard>
             </div>
         )
     }

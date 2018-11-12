@@ -87,7 +87,6 @@ export default class AddTVShow extends Component {
                         <Sticky>
                             <Input size='small' fluid focus type='text' placeholder="Search..." icon='search'
                                 value={this.state.searchQuery} onChange={this.inputChangeHandler}
-                                onChange={this.inputChangeHandler}
                                 onKeyPress={this.handleKeyPress} />
 
                             {this.state.searching ?

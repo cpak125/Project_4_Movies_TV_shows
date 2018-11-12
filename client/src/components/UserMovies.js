@@ -79,7 +79,7 @@ export default class UserMovies extends Component {
                         <Card.Content >
                             <Card.Header textAlign='center'> {movie.title} </Card.Header>
                         </Card.Content>
-                        <Image style={{ height: '25vw' }} fluid src={movie.poster_path} alt='movie poster' />
+                        <Image rounded style={{ height: '25vw' }} fluid src={movie.poster_path} alt='movie poster' />
                     </Card>
                 </Grid.Column>
             )

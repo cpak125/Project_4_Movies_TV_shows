@@ -84,7 +84,7 @@ export default class UserTvShows extends Component {
                         <Card.Content>
                             <Card.Header textAlign='center'> Name: {tvShow.name} </Card.Header>
                         </Card.Content>
-                        <Image style={{ height: '25vw' }} fluid src={tvShow.poster_path} alt='show poster' />
+                        <Image rounded style={{ height: '25vw' }} fluid src={tvShow.poster_path} alt='show poster' />
                     </Card>
                 </Grid.Column>
             )
