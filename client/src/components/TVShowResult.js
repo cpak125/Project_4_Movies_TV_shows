@@ -27,7 +27,7 @@ export default class TVShowResult extends Component {
                     <Grid stackable>
                         <Grid.Row>
                             <Grid.Column mobile={4} stretched>
-                                <Image rounded size='medium' src={this.props.poster_path} alt='show poster' />
+                                <Image rounded size='small' src={this.props.poster_path} alt='show poster' />
                             </Grid.Column>
                             <Grid.Column stretched mobile={12}>
                                 <StyledHeader>{this.props.name}</StyledHeader>
@@ -36,7 +36,7 @@ export default class TVShowResult extends Component {
                             </Grid.Column>
                         </Grid.Row>
                     </Grid>
-                    <Button color='green' floated='right'
+                    <Button color='green' floated='right' size='small'
                         onClick={() => this.addNewTVShow(this.props.name, this.props.tv_id,
                             this.props.first_air_date, this.props.overview, this.props.poster_path)}
                     >Add to List

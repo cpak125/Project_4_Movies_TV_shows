@@ -6,7 +6,7 @@ import { Card, Image, Button, Menu, Icon, Confirm } from 'semantic-ui-react';
 
 const StyledCard = styled(Card)`
 &&&{
-width:60vw;
+width:50vw;
 margin-top:5vw;
 margin-bottom:5vw;
 background-color:gray;
@@ -15,8 +15,6 @@ background-color:gray;
 
 const StyledContent = styled(Card.Content)`
 &&&{
-    margin-bottom:3vw;
-    padding-top: 3vw;
     line-height: 30px;
 }
 `
@@ -71,7 +69,7 @@ export default class SingleMovie extends Component {
     handleCancel = () => this.setState({ confirmOpen: false })
 
     render() {
-        const user=this.state.user
+        const user = this.state.user
         const movie = this.state.movie
         const movieDetails = this.state.movieDetails
         const genres = movieDetails.genres
@@ -90,7 +88,7 @@ export default class SingleMovie extends Component {
                     </Menu.Item>
 
                     <Menu.Item as={Link} to={`/users/${userId}`}>
-                        <Icon link name='user' /> User's Profile
+                        <Icon link name='user' />{user.name}'s Profile
                      </Menu.Item>
 
                     <Menu.Item as={Link} to={`/users/${userId}/movies`}>
@@ -112,17 +110,17 @@ export default class SingleMovie extends Component {
                         <Card.Description><b>Genre(s):</b>{genreNames.toString()}</Card.Description>
                         <Card.Description><b>Release Date:</b> {movie.release_date} </Card.Description>
                         <Card.Description><b>Overview:</b> {movie.overview}</Card.Description>
+                        <Button floated='right' color='red' onClick={this.showConfirm}>Delete Movie</Button>
+                        <Confirm
+                            open={this.state.confirmOpen}
+                            content={`Are you sure you want to delete '${movie.title}' ? `}
+                            cancelButton='No'
+                            confirmButton="Yes"
+                            size='tiny'
+                            onCancel={this.handleCancel}
+                            onConfirm={() => this.deleteMovie(movie.id)} />
                     </StyledContent>
-
-                    <Button fluid color='red' onClick={this.showConfirm}>Delete Movie</Button>
-                    <Confirm
-                        open={this.state.confirmOpen}
-                        content={`Are you sure you want to delete '${movie.title}' ? `}
-                        cancelButton='No'
-                        confirmButton="Yes"
-                        size='tiny'
-                        onCancel={this.handleCancel}
-                        onConfirm={() => this.deleteMovie(movie.id)} />
+                        
                 </StyledCard>
             </div>
         )

@@ -93,7 +93,7 @@ export default class SingleTVShow extends Component {
                     </Menu.Item>
 
                     <Menu.Item as={Link} to={`/users/${userId}`}>
-                        <Icon link name='user' /> User's Profile
+                        <Icon link name='user' /> {user.name}'s Profile
                      </Menu.Item>
 
                     <Menu.Item as={Link} to={`/users/${userId}/tv_shows`}>
