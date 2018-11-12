@@ -47,7 +47,7 @@ export default class AddMovie extends Component {
     searchButtonHandler = async () => {
         const response = await axios.get(`https://api.themoviedb.org/3/search/movie?query=${this.state.searchQuery}&api_key=${process.env.REACT_APP_API_KEY}`)
         this.transferResult(response)
-        this.toggleSearching()
+        // this.toggleSearching()
     }
 
     newSearchHandler = () => {
@@ -83,7 +83,7 @@ export default class AddMovie extends Component {
                     open={this.state.modalOpen}
                     onClose={this.handleClose}>
 
-                    <Modal.Header>Search for a Movie</Modal.Header>
+                    {/* <Modal.Header>Search for a Movie</Modal.Header> */}
                     <Modal.Content >
                         <Sticky offset={2}>
                             <Input size='small' fluid focus type='text' icon='search'
@@ -92,20 +92,21 @@ export default class AddMovie extends Component {
                                 onChange={this.inputChangeHandler}
                                 onKeyPress={this.handleKeyPress} />
 
-                            {this.state.searching ?
-                                <StyledSearchButton size='small' primary floated='right' onClick={this.newSearchHandler} >New Search</StyledSearchButton> :
-                                <StyledSearchButton size='small' primary floated='right' onClick={this.searchButtonHandler}>Search</StyledSearchButton> }
+                            {/* {this.state.searching ? */}
+                                {/* <StyledSearchButton size='small' primary floated='right' onClick={this.newSearchHandler} >New Search</StyledSearchButton> : */}
+                                <StyledSearchButton size='medium' primary floated='right' onClick={this.searchButtonHandler}>Search</StyledSearchButton> 
                         </Sticky>
                     </Modal.Content>
 
                     <Modal.Content scrolling >
-                        {this.state.searching ?
+                        {/* {this.state.searching ? */}
                             <MovieResults
                                 searchResults={this.state.searchResults}
                                 addNewMovie={this.props.addNewMovie}
                                 resetSearch={this.resetSearch}
                                 handleClose={this.handleClose}
-                            /> : null }
+                            /> 
+                            {/* : null } */}
                     </Modal.Content>
                 </Modal>
             </div>

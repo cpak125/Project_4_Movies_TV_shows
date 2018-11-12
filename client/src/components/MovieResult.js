@@ -27,7 +27,7 @@ export default class MovieResult extends Component {
           <Grid stackable>
             <Grid.Row >
               <Grid.Column mobile={4} stretched>
-                <Image  rounded size='medium' src={this.props.poster_path} alt='movie poster' />
+                <Image size='small' rounded src={this.props.poster_path} alt='movie poster' />
               </Grid.Column>
               <Grid.Column stretched mobile={12}>
                 <StyledHeader>{this.props.title}</StyledHeader>
@@ -36,7 +36,7 @@ export default class MovieResult extends Component {
               </Grid.Column>
             </Grid.Row>
           </Grid>
-          <Button color='green' floated='right'
+          <Button color='green' floated='right' size='small'
                   onClick={() => this.addNewMovie(
                     this.props.title, this.props.movie_id, this.props.release_date,
                     this.props.overview, this.props.poster_path)}
