@@ -5,7 +5,7 @@ import { Button } from 'semantic-ui-react';
 
 const Page=styled.div`
 background-image:url('https://i.imgur.com/NQk1Lcq.jpg');
-height:100vw;
+height:100vh;
 background-position: center ;
 background-repeat: no-repeat;
 background-size:cover;
