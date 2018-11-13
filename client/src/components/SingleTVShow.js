@@ -4,20 +4,44 @@ import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 import { Card, Image, Button, Menu, Icon, Confirm } from 'semantic-ui-react';
 
+const Page = styled.div`
+    background:url('https://i.imgur.com/oMvEDbI.png');
+    background-color:black;
+    margin:0 auto;
+    height:100%;
+`
+const StyledMenu = styled(Menu)`
+ &&&{
+    font-family: 'Trade Winds', cursive;
+ }
+ `
+
 const StyledCard = styled(Card)`
 &&&{
-width:60vw;
-margin-top:5vw;
-margin-bottom:5vw;
-background-color:gray;
+    width:60vw;
+    margin-top:5vw;
+    margin-bottom:5vw;
+    font-family: 'Ubuntu Mono', monospace;
+    background-color:#00120b;
+    font-size:18px;
+    position:relative;
+}
+`
+const StyledHeader = styled(Card.Header)`
+&&&{
+  font-size:40px;
+  font-family: 'Cinzel', serif;
+  color:#02c39a;
+  margin-top:20px;
 }
 `
 
 const StyledContent = styled(Card.Content)`
 &&&{
-    margin-bottom:3vw;
+    margin-bottom:1vw;
     padding-top: 3vw;
-    line-height: 30px;
+    line-height: 2;
+    
 }
 `
 
@@ -82,8 +106,8 @@ export default class SingleTVShow extends Component {
         const userId = this.props.match.params.user_id
 
         return (
-            <div>
-                <Menu fluid widths={5} size='tiny' icon='labeled' inverted>
+            <Page>
+                <StyledMenu fluid widths={5} size='tiny' icon='labeled' inverted>
                     <Menu.Item as={Link} to='/'>
                         <Icon link name='home' /> Home
                     </Menu.Item>
@@ -102,36 +126,36 @@ export default class SingleTVShow extends Component {
                     <Menu.Item as={Link} to={`/users/${userId}/movies`}>
                         <Icon link name='film' />{user.name}'s Movies
                      </Menu.Item>
-                </Menu>
+                </StyledMenu>
 
                 <StyledCard centered>
-                    <Card.Content>
-                        <Card.Header textAlign='center'> {tvShow.name}</Card.Header>
-                    </Card.Content>
+                    <StyledHeader textAlign='center'> {tvShow.name}</StyledHeader>
+
                     <Card.Content textAlign='center'>
                         <Image rounded src={tvShow.poster_path} alt='show poster' />
                     </Card.Content>
                     <StyledContent>
-                        <Card.Description><b>Genre(s):</b> {genreNames.toString()}</Card.Description>
-                        <Card.Description><b>Overview:</b> {tvShow.overview}</Card.Description>
-                        <Card.Description><b>Network(s):</b> {networkNames.toString()}</Card.Description>
-                        <Card.Description><b>First Air Date:</b> {tvShow.first_air_date} </Card.Description>
-                        <Card.Description><b>Total Seasons:</b> {tvShowDetails.number_of_seasons}</Card.Description>
-                        <Card.Description><b>Total Episodes:</b> {tvShowDetails.number_of_episodes}</Card.Description>
-                        <Card.Description><b>Status:</b> {tvShowDetails.status}</Card.Description>
+                        <Card.Description style={{ color: '#02c39a' }}><b>GENRE(S):</b> {genreNames.toString()}</Card.Description>
+                        <Card.Description style={{ color: '#02c39a' }}><b>OVERVIEW:</b> {tvShow.overview}</Card.Description>
+                        <Card.Description style={{ color: '#02c39a' }}><b>NETWORK(S):</b> {networkNames.toString()}</Card.Description>
+                        <Card.Description style={{ color: '#02c39a' }}><b>FIRST AIR DATE:</b> {tvShow.first_air_date} </Card.Description>
+                        <Card.Description style={{ color: '#02c39a' }}><b>TOTAL SEASONS:</b> {tvShowDetails.number_of_seasons}</Card.Description>
+                        <Card.Description style={{ color: '#02c39a' }}><b>TOTAL EPISODES:</b> {tvShowDetails.number_of_episodes}</Card.Description>
+                        <Card.Description style={{ color: '#02c39a' }}><b>STATUS:</b> {tvShowDetails.status}</Card.Description>
+
+                        <Button floated='right' color='red' onClick={this.showConfirm}>Delete TV Show</Button>
+                        <Confirm
+                            open={this.state.confirmOpen}
+                            content={`Are you sure you want to delete '${tvShow.name}' ? `}
+                            cancelButton='No'
+                            confirmButton="Yes"
+                            size='tiny'
+                            onCancel={this.handleCancel}
+                            onConfirm={() => this.deleteTvShow(tvShow.id)} />
                     </StyledContent>
 
-                    <Button fluid color='red' onClick={() => this.showConfirm}>Delete TV Show</Button>
-                    <Confirm
-                        open={this.state.confirmOpen}
-                        content={`Are you sure you want to delete '${tvShow.name}' ? `}
-                        cancelButton='No'
-                        confirmButton="Yes"
-                        size='tiny'
-                        onCancel={this.handleCancel}
-                        onConfirm={() => this.deleteTvShow(tvShow.id)} />
                 </StyledCard>
-            </div>
+            </Page>
         )
     }
 }

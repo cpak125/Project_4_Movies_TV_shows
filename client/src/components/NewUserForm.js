@@ -5,7 +5,7 @@ import styled from 'styled-components'
 const StyledForm = styled(Form)`
     &&& {
         width: 30vw; 
-        margin: 0 auto;  
+        margin: 0 auto; 
     }
 `
 const StyledModal = styled(Modal)`
@@ -13,7 +13,6 @@ const StyledModal = styled(Modal)`
         width: 50vw;
         margin: 0 auto;
         padding-bottom: 10px;
-
     }
 `
 
@@ -60,7 +59,7 @@ export default class NewUserForm extends Component {
     }
 
     addNewUserModal = () => (
-        <StyledModal
+        <StyledModal 
             trigger={<Icon link color='green' name='user plus' onClick={this.handleOpen}>
             </Icon>}
             open={this.state.modalOpen}

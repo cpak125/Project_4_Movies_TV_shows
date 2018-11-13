@@ -7,10 +7,16 @@ import EditUserForm from './EditUserForm';
 
 const ProfileSection = styled.div`
     margin-top: 20px;
-    margin: auto;
+    margin: 0 auto;
     display:flex;
     flex-direction: column;
     align-items: center;
+    font-family: 'Trade Winds', cursive;
+    h1{
+        font-family: 'Permanent Marker', cursive;
+        color:#d8e4ff;
+        font-size:40px;
+    }
     Button{
         font-size: 40px;
     }
@@ -19,17 +25,28 @@ const Footer = styled.div`
     display:flex;
     flex-direction:row;
     justify-content:space-evenly;
-    margin-top:40px;
+    position:relative;
+    margin-top:20px;
     Button{
         width:30vw;
     }
 `
-
+const Page = styled.div`
+    background:url('https://i.imgur.com/oMvEDbI.png');
+    height:100vw;
+    background-color:black;
+    margin:0 auto;
+`
+const StyledMenu = styled(Menu)`
+ &&&{
+    font-family: 'Trade Winds', cursive;
+ }
+ `
 const StyledCard = styled(Card)`
     &&&{
-        width: 32vw;
+        width: 40vw;
         height: 300px;
-        background-color:lightgray;
+        background-color:#00120b;
     }
 `
 const StyledCardContent = styled(Card.Content)`
@@ -78,75 +95,77 @@ export default class SingleUser extends Component {
         const user = this.state.user
         return (
             <div>
-                <Menu fluid widths={2} size='tiny' icon='labeled' inverted>
-                    <Menu.Item as={Link} to='/'>
-                        <Icon link name='home' /> Home
+                <Page>
+                    <StyledMenu fluid widths={2} size='tiny' icon='labeled' inverted>
+                        <Menu.Item as={Link} to='/'>
+                            <Icon link name='home' /> Home
                     </Menu.Item>
-                    <Menu.Item as={Link} to='/users'>
-                        <Icon link name='users' /> All Users
+                        <Menu.Item as={Link} to='/users'>
+                            <Icon link name='users' /> All Users
                     </Menu.Item>
-                </Menu>
+                    </StyledMenu>
 
-                <ProfileSection>
-                    <h1>{user.name}'s Profile</h1>
-                    <StyledCard>
-                        <StyledCardContent>
+                    <ProfileSection>
+                        <h1>{user.name}'s Profile</h1>
+                        <StyledCard>
+                            <StyledCardContent>
 
-                            <Card.Description><b>Name:</b> {user.name}</Card.Description>
-                            <Card.Description><b>Age:</b> {user.age}</Card.Description>
-                            <Card.Description> <b>Location:</b> {user.location}</Card.Description>
+                                <Card.Description style={{ color: '#02c39a' }}><b>Name:</b> {user.name}</Card.Description>
+                                <Card.Description style={{ color: '#02c39a' }}><b>Age:</b> {user.age}</Card.Description>
+                                <Card.Description style={{ color: '#02c39a' }}> <b>Location:</b> {user.location}</Card.Description>
 
-                            <Card.Content extra>
-                                <EditUserForm
-                                    userId={this.props.match.params.id}
-                                    push={this.props.history.push}
-                                    fetchData={this.fetchData}
-                                />
-                            </Card.Content>
+                                <Card.Content extra>
+                                    <EditUserForm
+                                        userId={this.props.match.params.id}
+                                        push={this.props.history.push}
+                                        fetchData={this.fetchData}
+                                    />
+                                </Card.Content>
 
-                            <Card.Content extra>
-                                <Button
-                                    fluid
-                                    size='medium'
-                                    color='red'
-                                    onClick={this.showConfirm}>Delete Profile
+                                <Card.Content extra>
+                                    <Button
+                                        fluid
+                                        size='medium'
+                                        color='red'
+                                        onClick={this.showConfirm}>Delete Profile
                                 </Button>
-                                <Confirm
-                                    open={this.state.confirmOpen}
-                                    content={`Are you sure you want to delete ${user.name}'s profile? `}
-                                    cancelButton='No'
-                                    confirmButton="Yes"
-                                    size='tiny'
-                                    onCancel={this.handleCancel}
-                                    onConfirm={() => this.deleteUser()} />
-                            </Card.Content>
-                        </StyledCardContent>
-                    </StyledCard>
-                </ProfileSection>
+                                    <Confirm
+                                        open={this.state.confirmOpen}
+                                        content={`Are you sure you want to delete ${user.name}'s profile? `}
+                                        cancelButton='No'
+                                        confirmButton="Yes"
+                                        size='tiny'
+                                        onCancel={this.handleCancel}
+                                        onConfirm={() => this.deleteUser()} />
+                                </Card.Content>
+                            </StyledCardContent>
+                        </StyledCard>
+                    </ProfileSection>
 
-                <Footer>
-                    <Link to={`/users/${user.id}/movies`}>
-                        <Button compact size='big' color='green' animated='fade'>
-                            <Button.Content visible>
-                                <Icon name='film' size='big' />
-                            </Button.Content>
-                            <Button.Content hidden>
-                                See Favorite Movies
+                    <Footer>
+                        <Link to={`/users/${user.id}/movies`}>
+                            <Button compact size='big' color='green' animated='fade'>
+                                <Button.Content visible>
+                                    <Icon name='film' size='big' />
+                                </Button.Content>
+                                <Button.Content hidden>
+                                    See Favorite Movies
                         </Button.Content>
-                        </Button>
-                    </Link>
+                            </Button>
+                        </Link>
 
-                    <Link to={`/users/${user.id}/tv_shows`}>
-                        <Button compact size='big' color='green' animated='fade'>
-                            <Button.Content visible>
-                                <Icon name='tv' size='big' />
+                        <Link to={`/users/${user.id}/tv_shows`}>
+                            <Button compact size='big' color='green' animated='fade'>
+                                <Button.Content visible>
+                                    <Icon name='tv' size='big' />
+                                </Button.Content>
+                                <Button.Content hidden>
+                                    See Favorite TV Shows
                             </Button.Content>
-                            <Button.Content hidden>
-                                See Favorite TV Shows
-                            </Button.Content>
-                        </Button>
-                    </Link>
-                </Footer>
+                            </Button>
+                        </Link>
+                    </Footer>
+                </Page>
             </div>
         )
     }

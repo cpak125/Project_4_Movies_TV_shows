@@ -6,15 +6,32 @@ import NewUserForm from './NewUserForm';
 import { Icon, Menu } from 'semantic-ui-react';
 
 const Body = styled.div`
- text-align:center;
- margin-top:20px;
+    text-align:center;
+    margin-top:20px;
+    display:flex;
+    flex-direction:column;
+    line-height:2;
+    font-family: 'Permanent Marker', cursive;
+    font-size:25px;
+    color:#02c39a;
+ h1{
+    color:#d8e4ff;
+    font-size:40px;
+    font-family: 'Permanent Marker', cursive;
+ }
  `
-
-const StyledUser = styled.div`
- margin-top:10px;
- margin-bottom:10px;
- font-size:20px;
+const StyledMenu = styled(Menu)`
+ &&&{
+    font-family: 'Trade Winds', cursive;
+ }
  `
+ 
+const Page = styled.div`
+    background-image:url('https://i.imgur.com/oMvEDbI.png');
+    height:100vw;
+    background-color:black;
+    margin:0 auto;
+`
 
 export default class AllUsers extends Component {
 
@@ -39,30 +56,27 @@ export default class AllUsers extends Component {
     render() {
         const userList = this.state.users.map((user, i) => {
             return (
-                <StyledUser key={i}>
-                    <Link to={`/users/${user.id}`} >{user.name} </Link>
-                </StyledUser>
+                <Link style={{color:'#02c39a'}} key={i} to={`/users/${user.id}`} >{user.name} </Link>
             )
         })
 
         return (
-            <div>
-                <Menu size='tiny' icon='labeled' inverted>
+            <Page>
+                <StyledMenu style={{}} size='tiny' icon='labeled' inverted>
                     <Menu.Item as={Link} to='/'>
                         <Icon link name='home' /> Home
                     </Menu.Item>
-                </Menu>
+                </StyledMenu>
 
                 <Body>
                     <h1>Users <NewUserForm
                         addNewUser={this.addNewUser}
                     />
                     </h1>
-
-                    {userList}
+                        {userList}
                 </Body>
 
-            </div>
+            </Page>
 
 
 

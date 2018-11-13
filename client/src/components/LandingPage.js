@@ -5,7 +5,7 @@ import { Button } from 'semantic-ui-react';
 
 const Page=styled.div`
 background-image:url('https://i.imgur.com/NQk1Lcq.jpg');
-height:100vh;
+height:100vw;
 background-position: center ;
 background-repeat: no-repeat;
 background-size:cover;
@@ -14,14 +14,16 @@ text-align:center;
 display:flex;
 flex-direction:column;
 justify-content:space-evenly;
+overflow:hidden;
+margin: 0 auto;
 h1{
   color:#02C39A; 
   position:relative;
-  margin:0 auto;
   font-family: 'Permanent Marker', cursive;
-  font-size:75px;
+  font-size:70px;
   font-weight:bold;
-  letter-spacing: 15px;
+  letter-spacing: 5px;
+  margin: 0 auto;
 }
 p{
   color:#D8E4FF;
@@ -31,7 +33,7 @@ p{
   position:relative;
   margin: 0 auto;
   font-family: 'Permanent Marker', cursive;
-    letter-spacing: 1px;
+  letter-spacing: 1px;
 }
 `
 const StyledButton=styled(Button)`

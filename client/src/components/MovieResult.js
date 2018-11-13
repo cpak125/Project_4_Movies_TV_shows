@@ -5,11 +5,16 @@ import styled from 'styled-components'
 const StyledCard= styled(Card)`
 &&&{
   margin-bottom:4vw;
+  font-family: 'Ubuntu Mono', monospace;
+  background-color:#00120b;
+  color:#02c39a;
+  font-size:18px;
 }
 `
 const StyledHeader = styled(Card.Header)`
 &&&{
-  font-size:20px;
+  font-size:25px;
+  font-family: 'Cinzel', serif;
 }
 `
 
@@ -31,8 +36,8 @@ export default class MovieResult extends Component {
               </Grid.Column>
               <Grid.Column stretched mobile={12}>
                 <StyledHeader>{this.props.title}</StyledHeader>
-                <Card.Description> <b>Release date:</b> {this.props.release_date}</Card.Description>
-                <Card.Description><b>Overview:</b> {this.props.overview}</Card.Description>
+                <Card.Description> <b>RELEASE DATE:</b> {this.props.release_date}</Card.Description>
+                <Card.Description><b>OVERVIEW:</b> {this.props.overview}</Card.Description>
               </Grid.Column>
             </Grid.Row>
           </Grid>

@@ -4,18 +4,43 @@ import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 import { Card, Image, Button, Menu, Icon, Confirm } from 'semantic-ui-react';
 
+const Page = styled.div`
+    background:url('https://i.imgur.com/oMvEDbI.png');
+    background-color:black;
+    margin:0 auto;
+    height:100%;
+`
+const StyledMenu = styled(Menu)`
+ &&&{
+    font-family: 'Trade Winds', cursive;
+ }
+ `
+
 const StyledCard = styled(Card)`
 &&&{
-width:50vw;
-margin-top:5vw;
-margin-bottom:5vw;
-background-color:gray;
+    width:60vw;
+    margin-top:5vw;
+    margin-bottom:5vw;
+    font-family: 'Ubuntu Mono', monospace;
+    background-color:#00120b;
+    font-size:18px;
+    position:relative;
+}
+`
+const StyledHeader = styled(Card.Header)`
+&&&{
+  font-size:40px;
+  font-family: 'Cinzel', serif;
+  color:#02c39a;
+  margin-top:20px;
 }
 `
 
 const StyledContent = styled(Card.Content)`
 &&&{
-    line-height: 30px;
+    margin-bottom:1vw;
+    padding-top: 3vw;
+    line-height: 2;
 }
 `
 
@@ -77,8 +102,8 @@ export default class SingleMovie extends Component {
         const userId = this.props.match.params.user_id
 
         return (
-            <div>
-                <Menu fluid widths={5} size='tiny' icon='labeled' inverted>
+            <Page>
+                <StyledMenu fluid widths={5} size='tiny' icon='labeled' inverted>
                     <Menu.Item as={Link} to='/'>
                         <Icon link name='home' /> Home
                     </Menu.Item>
@@ -97,19 +122,18 @@ export default class SingleMovie extends Component {
                     <Menu.Item as={Link} to={`/users/${userId}/tv_shows`}>
                         <Icon link name='tv' />{user.name}'s TV Shows
                      </Menu.Item>
-                </Menu>
+                </StyledMenu>
 
                 <StyledCard centered>
-                    <Card.Content>
-                        <Card.Header textAlign='center'>{movie.title}</Card.Header>
-                    </Card.Content>
+                    <StyledHeader textAlign='center'>{movie.title}</StyledHeader>
+                  
                     <Card.Content textAlign='center'>
                         <Image rounded src={movie.poster_path} alt='movie poster' />
                     </Card.Content>
-                    <StyledContent>
-                        <Card.Description><b>Genre(s):</b>{genreNames.toString()}</Card.Description>
-                        <Card.Description><b>Release Date:</b> {movie.release_date} </Card.Description>
-                        <Card.Description><b>Overview:</b> {movie.overview}</Card.Description>
+                    <StyledContent >
+                        <Card.Description style={{color:'#02c39a'}}><b>GENRE(S):</b>{genreNames.toString()}</Card.Description>
+                        <Card.Description style={{color:'#02c39a'}}><b>RELEASE DATE:</b> {movie.release_date} </Card.Description>
+                        <Card.Description style={{color:'#02c39a'}}><b>OVERVIEW:</b> {movie.overview}</Card.Description>
                         <Button floated='right' color='red' onClick={this.showConfirm}>Delete Movie</Button>
                         <Confirm
                             open={this.state.confirmOpen}
@@ -122,7 +146,7 @@ export default class SingleMovie extends Component {
                     </StyledContent>
                         
                 </StyledCard>
-            </div>
+            </Page>
         )
     }
 }
