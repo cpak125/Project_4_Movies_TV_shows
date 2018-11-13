@@ -20,7 +20,7 @@ h1{
   color:#02C39A; 
   position:relative;
   font-family: 'Permanent Marker', cursive;
-  font-size:70px;
+  font-size:80px;
   font-weight:bold;
   letter-spacing: 5px;
   margin: 0 auto;
@@ -29,7 +29,7 @@ p{
   color:#D8E4FF;
   background-color: rgba(0,0,0, .6);
   width:50%;
-  font-size:px;
+  font-size:18px;
   position:relative;
   margin: 0 auto;
   font-family: 'Permanent Marker', cursive;
