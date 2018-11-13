@@ -104,7 +104,7 @@ export default class UserMovies extends Component {
                 <Grid.Column key={i}>
                     <Card link style={{ background: '#00120b' }} as={Link} to={`/users/${user.id}/movies/${movie.id}`} >
                         <StyledHeaderCard>{movie.title}</StyledHeaderCard>
-                        <Image rounded style={{ height: '25vw' }} fluid src={movie.poster_path} alt='movie poster' />
+                        <Image rounded style={{ height: '20vw' }} src={movie.poster_path} alt='movie poster' />
                     </Card>
                 </Grid.Column>
             )

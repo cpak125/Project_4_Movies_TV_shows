@@ -41,6 +41,7 @@ const StyledHeaderCard = styled(Card.Header)`
   color:#02c39a;
   font-weight:1000;
   margin:7px 0 7px 0;
+  position: relative;
 }
 `
 
@@ -107,9 +108,9 @@ export default class UserTvShows extends Component {
         const tvShowsList = this.state.tvShows.map((tvShow, i) => {
             return (
                 <Grid.Column key={i} >
-                    <Card style={{ background: '#00120b' }} raised link as={Link} to={`/users/${user.id}/tv_shows/${tvShow.id}`} >
+                    <Card style={{ background: '#00120b' }} fluid raised link as={Link} to={`/users/${user.id}/tv_shows/${tvShow.id}`} >
                         <StyledHeaderCard textAlign='center'>{tvShow.name} </StyledHeaderCard>
-                        <Image rounded style={{ height: '25vw' }} fluid src={tvShow.poster_path} alt='show poster' />
+                        <Image rounded style={{ height: '20vw' }} src={tvShow.poster_path} alt='show poster' />
                     </Card>
                 </Grid.Column>
             )
