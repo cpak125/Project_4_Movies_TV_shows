@@ -22,10 +22,10 @@ This app consists of three models: User, Movie, and TV Show. The User model has 
 8. React.js
 
 ## ERD
-![ERD]()
+![ERD](https://github.com/cpak125/Project_4_Movies_TV_shows/blob/master/public/images/Project%204%20-Watcher%20ERD.png)
 
 ## Wireframe
-![Wireframe]()
+![Wireframe](https://github.com/cpak125/Project_4_Movies_TV_shows/blob/master/public/images/Project_4_Wireframe.png)
 
 ## Future Development
 1. User Authentication
