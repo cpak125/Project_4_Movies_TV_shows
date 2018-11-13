@@ -1,7 +1,7 @@
 # Watcher
 
 ##
-For my final project, I created an app named "Watcher". This app allows users to share their favorite movies and tv shows with people around the world. Or users can see other peoples' profiles and see their favorite movies and tv shows. Users are able to search for movies and tv shows to add to their favorites list through a third-party API. 
+For my final project, I created an app named "Watcher". This app allows users to share their favorite movies and tv shows with people around the world. Or users can see other peoples' profiles and see their favorite movies and tv shows. Users are able to search for movies and tv shows through The Movie Database's API, to add to their favorites list. 
 
 This app consists of three models: User, Movie, and TV Show. The User model has full CRUD functionality, while the Movie and TV Show model have add and delete functionality.
 
@@ -20,6 +20,7 @@ This app consists of three models: User, Movie, and TV Show. The User model has 
 6. PostrgreSQL
 7. Semantic UI React
 8. React.js
+9. TMDB(The Movie Database) API
 
 ## ERD
 ![ERD](https://github.com/cpak125/Project_4_Movies_TV_shows/blob/master/public/images/Project%204%20-Watcher%20ERD.png)
