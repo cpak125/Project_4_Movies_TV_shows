@@ -78,7 +78,7 @@ export default class NewUserForm extends Component {
                     </Form.Field>
                     <Form.Field inline>
                         <label>Location:</label>
-                        <Input fluid onChange={this.handleChange} type="text" name="location" value={this.state.newUser.location} placeholder='City, State' />
+                        <Input fluid onChange={this.handleChange} type="text" name="location" value={this.state.newUser.location} placeholder='City, State/Country' />
                     </Form.Field>
                     <Button color='red' floated='right' onClick={this.handleClose}>Cancel</Button>
                     <Button  color='green' floated='right' className='update' type='submit' value='Add Post'>Submit</Button>
