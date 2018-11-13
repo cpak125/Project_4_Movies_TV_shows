@@ -13,7 +13,7 @@ background-attachment: fixed;
 text-align:center;
 display:flex;
 flex-direction:column;
-justify-content:space-evenly;
+justify-content:flex-start;
 overflow:hidden;
 margin: 0 auto;
 h1{
@@ -40,6 +40,7 @@ const StyledButton=styled(Button)`
 &&&{
 background-color:#02c39a;
 color:#d8e4ff;
+margin-top:10px;
 }
 `
 
