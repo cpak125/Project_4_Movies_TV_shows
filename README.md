@@ -17,7 +17,7 @@ This app consists of three models: User, Movie, and TV Show. The User model has 
 3. Google Fonts
 4. Node.js
 5. Ruby on Rails
-6. PostrgreSQL
+6. PostgreSQL
 7. Semantic UI React
 8. React.js
 9. TMDB(The Movie Database) API
