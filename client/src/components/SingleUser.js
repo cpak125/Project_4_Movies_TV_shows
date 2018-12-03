@@ -36,6 +36,7 @@ const Page = styled.div`
     height:100vh;
     background-color:black;
     margin:0 auto;
+
 `
 const StyledMenu = styled(Menu)`
  &&&{
@@ -94,7 +95,6 @@ export default class SingleUser extends Component {
     render() {
         const user = this.state.user
         return (
-            <div>
                 <Page>
                     <StyledMenu fluid widths={2} size='tiny' icon='labeled' inverted>
                         <Menu.Item as={Link} to='/'>
@@ -166,7 +166,6 @@ export default class SingleUser extends Component {
                         </Link>
                     </Footer>
                 </Page>
-            </div>
         )
     }
 }
