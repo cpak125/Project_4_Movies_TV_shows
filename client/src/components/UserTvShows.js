@@ -25,7 +25,7 @@ const Page = styled.div`
     background:url('https://i.imgur.com/oMvEDbI.png');
     background-color:black;
     margin:0 auto;
-    height:100vw;
+    height:100%;
 `
 const StyledMenu = styled(Menu)`
  &&&{
@@ -34,15 +34,13 @@ const StyledMenu = styled(Menu)`
  `
 
 const StyledHeaderCard = styled(Card.Header)`
-&&&{
-  font-size:25px;
-  font-family: 'Cinzel', serif;
-  text-align:center;
-  color:#02c39a;
-  font-weight:1000;
-  margin:7px 0 7px 0;
-  position: relative;
-}
+ &&&{
+   font-size:20px;
+   font-family: 'Cinzel', serif;
+   color:#02c39a;
+   font-weight:1000;
+   margin:10px 0 10px 0;
+    }
 `
 
 export default class UserTvShows extends Component {

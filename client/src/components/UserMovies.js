@@ -14,7 +14,7 @@ const Page = styled.div`
     background:url('https://i.imgur.com/oMvEDbI.png');
     background-color:black;
     margin:0 auto;
-    height:100vw;
+    height:100%;
 `
 const StyledMenu = styled(Menu)`
  &&&{
@@ -33,9 +33,8 @@ h1{
 
 const StyledHeaderCard = styled(Card.Header)`
  &&&{
-   font-size:23px;
+   font-size:20px;
    font-family: 'Cinzel', serif;
-   text-align:center;
    color:#02c39a;
    font-weight:1000;
    margin:10px 0 10px 0;
@@ -103,7 +102,7 @@ export default class UserMovies extends Component {
             return (
                 <Grid.Column key={i}>
                     <Card link style={{ background: '#00120b' }} as={Link} to={`/users/${user.id}/movies/${movie.id}`} >
-                        <StyledHeaderCard>{movie.title}</StyledHeaderCard>
+                        <StyledHeaderCard textAlign='center'>{movie.title}</StyledHeaderCard>
                         <Image rounded style={{ height: '20vw' }} src={movie.poster_path} alt='movie poster' />
                     </Card>
                 </Grid.Column>
@@ -135,7 +134,7 @@ export default class UserMovies extends Component {
                         <AddMovie addNewMovie={this.addNewMovie} />
                     </StyledHeader>
 
-                    <StyledGrid container columns={4} relaxed doubling>
+                    <StyledGrid columns={4} relaxed doubling>
                         {movieList.reverse()}
                     </StyledGrid>
                 </Page>

@@ -59,12 +59,12 @@ export default class AddTVShow extends Component {
                     </StyledAddButton>}
                     size='large'
                     closeIcon
-                    centered
+                    centered={false}
                     open={this.state.modalOpen}
                     onClose={this.handleClose} >
 
                     <Modal.Content>
-                        <Sticky>
+                        <Sticky offset={2}>
                             <Input size='small' fluid focus type='text' placeholder="Search for a TV Show..." icon='search'
                                 value={this.state.searchQuery} onChange={this.inputChangeHandler}
                                 onKeyPress={this.handleKeyPress} />

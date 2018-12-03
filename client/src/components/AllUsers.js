@@ -28,7 +28,7 @@ const StyledMenu = styled(Menu)`
  
 const Page = styled.div`
     background-image:url('https://i.imgur.com/oMvEDbI.png');
-    height:100vw;
+    height:100vh;
     background-color:black;
     margin:0 auto;
 `

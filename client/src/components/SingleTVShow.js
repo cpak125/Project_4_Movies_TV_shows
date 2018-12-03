@@ -18,7 +18,7 @@ const StyledMenu = styled(Menu)`
 
 const StyledCard = styled(Card)`
 &&&{
-    width:60vw;
+    width:70vw;
     margin-top:5vw;
     margin-bottom:5vw;
     font-family: 'Ubuntu Mono', monospace;
@@ -29,10 +29,11 @@ const StyledCard = styled(Card)`
 `
 const StyledHeader = styled(Card.Header)`
 &&&{
-  font-size:40px;
+  font-size:35px;
   font-family: 'Cinzel', serif;
   color:#02c39a;
   margin-top:20px;
+  line-height:1;
 }
 `
 
@@ -41,7 +42,6 @@ const StyledContent = styled(Card.Content)`
     margin-bottom:1vw;
     padding-top: 3vw;
     line-height: 2;
-    
 }
 `
 
@@ -142,7 +142,6 @@ export default class SingleTVShow extends Component {
                         <Card.Description style={{ color: '#02c39a' }}><b>TOTAL SEASONS:</b> {tvShowDetails.number_of_seasons}</Card.Description>
                         <Card.Description style={{ color: '#02c39a' }}><b>TOTAL EPISODES:</b> {tvShowDetails.number_of_episodes}</Card.Description>
                         <Card.Description style={{ color: '#02c39a' }}><b>STATUS:</b> {tvShowDetails.status}</Card.Description>
-
                         <Button floated='right' color='red' onClick={this.showConfirm}>Delete TV Show</Button>
                         <Confirm
                             open={this.state.confirmOpen}

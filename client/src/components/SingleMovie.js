@@ -18,21 +18,21 @@ const StyledMenu = styled(Menu)`
 
 const StyledCard = styled(Card)`
 &&&{
-    width:60vw;
+    width:75vw;
     margin-top:5vw;
     margin-bottom:5vw;
     font-family: 'Ubuntu Mono', monospace;
     background-color:#00120b;
     font-size:18px;
-    position:relative;
 }
 `
 const StyledHeader = styled(Card.Header)`
 &&&{
-  font-size:40px;
+  font-size:35px;
   font-family: 'Cinzel', serif;
   color:#02c39a;
   margin-top:20px;
+  line-height:1;
 }
 `
 
