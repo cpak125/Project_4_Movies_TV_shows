@@ -9,6 +9,6 @@
         "postinstall": "npm run build && npm run deploy && echo 'Client built!'"
     },
     "dependencies": {
-        "semantic-ui-react": "^1.1.0"
+        "semantic-ui-react": "^1.3.1"
     }
 }
